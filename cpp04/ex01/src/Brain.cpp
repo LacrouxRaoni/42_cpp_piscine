@@ -2,6 +2,7 @@
 
 	Brain::Brain(){
 		std::cout << "Brain standard constructor called" << std::endl;
+
 	}
 
 	Brain::Brain(const Brain& brain)

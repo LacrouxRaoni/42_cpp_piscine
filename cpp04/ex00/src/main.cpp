@@ -4,12 +4,26 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main(void){
+static void wrongAnimaltest()
+{
+	const WrongAnimal* meta = new WrongAnimal();
+	const WrongAnimal* i = new WrongCat();
+	const WrongCat *j = new WrongCat();
 
+	meta->makesound();
+	i->makesound();
+	j->makeSound();
+
+	delete meta;
+	delete i;
+	delete j;
+}
+
+int main(void)
+{
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-
 
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
@@ -18,21 +32,12 @@ int main(void){
 	i->makeSound(); //will output the cat sound!
 	meta->makeSound();
 
-	const WrongAnimal* cow = new WrongCat();
-	const WrongCat turtle;
-	cow->wrongAnimalSound();
-	turtle.wrongAnimalSound();
-
-
-
-
-
-	WrongCat monkey = new WrongAnimal(turtle);
-	monkey.wrongAnimalSound()
-
 
 	delete meta;
 	delete j;
 	delete i;
-	delete cow;
+
+	std::cout << "\n" << std::endl;
+	wrongAnimaltest();
+	std::cout << "\n" << std::endl;
 }
