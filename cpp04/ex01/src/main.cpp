@@ -21,13 +21,14 @@ int main(void){
 		std::cout << std::endl;
 	}
 	for (int i = 0; i < 100; i++){
+		std::cout << "Animal number " << i + 1 << ":" << std::endl;
 		delete animals[i];
 	}
 
+	std::cout << "_______________________________________________" << std::endl;
 	Dog basic;
-	
-	{
-		Dog tmp = basic;
-	}
+	Dog temp = basic;
+	std::cout << "_______________________________________________" << std::endl;
 
 }
+
