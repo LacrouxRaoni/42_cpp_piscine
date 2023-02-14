@@ -1,22 +1,11 @@
-# CPP Pool 03/08
+# Module 03
 
-Fourth list in CPP Pool where we dive for the first time in a new C++ and POO
+Module 03 is divided in four exercises. 
 
 ## About
 
-In this list we will lern about inheritance
+In this module, we will learn about inheritance and the diamond problem in C++.
 
-## Installation
-
-```
-git clone https://github.com/LacrouxRaoni/cpp01.git
-```
-
-in a folder you want; 
-
-then go to the exercice folder and type make.
-
-run ```./a.out``` and it's done!<br><br><br>
 
 ## Exercise 00 - Aaaaand... OPEN!
 

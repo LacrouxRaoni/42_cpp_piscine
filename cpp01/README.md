@@ -1,22 +1,10 @@
-# CPP Pool 01/08
+# Module 01
 
-Second list in CPP Pool where we dive for the first time in a new C++ and POO 
+Module 01 is divided in seven exercises. 
 
 ## About
 
-This project utilize C++ library and Makefile only.
-
-## Installation
-
-```
-git clone https://github.com/LacrouxRaoni/cpp01.git
-```
-
-in a folder you want; 
-
-then go tothe exercice folder and type make.
-
-run ```./projectName``` and it's done!<br><br><br>
+In this module, we will cover the topics of pointers, references, classes, and creating your own sed program.
 
 ## Exercise 00 - BraiiiiiiinnnzzzZ
 

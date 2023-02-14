@@ -1,22 +1,10 @@
-# CPP Pool 02/08
+# Module 02
 
-hird list in CPP Pool where we dive for the first time in a new C++ and POO
+Module 02 is divided in four exercises. 
 
 ## About
 
-This project utilize C++ library and Makefile only.
-
-## Installation
-
-```
-git clone https://github.com/LacrouxRaoni/cpp01.git
-```
-
-in a folder you want; 
-
-then go to the exercice folder and type make.
-
-run ```./a.out``` and it's done!<br><br><br>
+In this module, we will explore the concept of Orthodox Canonical classes and learn about constructors, destructors, and how to handle fixed points and floating-point numbers in C++.
 
 ## Exercise 00 - My First Class in Orthodox Canonical Form
 

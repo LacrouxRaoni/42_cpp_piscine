@@ -1,24 +1,10 @@
-# CPP Pool 00/08
+# Module 00
 
-This is the first project at 42 school where you dive in C++ and OOP in 3 exercises.
-
+Module 00 is divided in three exercises. 
 
 ## About
 
-This project utilize C++ library and Makefile only.
-
-## Installation
-
-```
-git clone https://github.com/LacrouxRaoni/cpp00.git
-```
-
-in a folder you want; 
-
-then go tothe exercice folder and type make.
-
-run ```./projectName``` and it's done!
-
+In this module, you will learn how to manipulate strings and work with classes.
 
 ## Exercice 00 - Megaphone
 A megaphone which hear a String from command line and return  it in uppercase
