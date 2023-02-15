@@ -64,3 +64,4 @@ Additionally, as part of this exercise, we need to create an array of animals in
 In this exercise, we need to convert class A to an abstract class, which affects all other classes that inherit from the Animal class, including the Animal class itself. To accomplish this, we have included the letter A in the Animal class name, creating a new class called AAnimal. We have also changed the virtual method makeSound() to receive a value of 0, indicating that there is no implementation of this method in the parent class. As a result, all classes that inherit from AAnimal must implement their own version of the makeSound() method.
 
 ## Exercise 03 - Interface & recap
+
