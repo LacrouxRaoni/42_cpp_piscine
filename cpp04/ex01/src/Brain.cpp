@@ -26,6 +26,6 @@
 		return *this;
 	}
 
-	std::string Brain::getIdeas(int i){
-		return this->ideas[i];
+	std::string Brain::getIdeas(){
+		return *this->ideas;
 	}

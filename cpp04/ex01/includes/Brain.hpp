@@ -12,7 +12,7 @@ class Brain
 		Brain(const Brain& brain);
 		~Brain();
 		Brain& operator=(Brain const& brain);
-		std::string getIdeas(int i);
+		std::string getIdeas();
 };
 
 #endif

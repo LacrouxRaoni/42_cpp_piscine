@@ -24,11 +24,42 @@ int main(void){
 		std::cout << "Animal number " << i + 1 << ":" << std::endl;
 		delete animals[i];
 	}
+	{
+		std::cout << "\nDeep Copy test" << std::endl;
+		std::cout << "_______________________________________________" << std::endl;
+		Cat *cat = new Cat();
+		Cat *deepCopyCat = new Cat(*cat);
+		Dog *dog = new Dog();
+		Dog *deepCopyDog = new Dog(*dog);
 
-	std::cout << "_______________________________________________" << std::endl;
-	Dog basic;
-	Dog temp = basic;
-	std::cout << "_______________________________________________" << std::endl;
-
-}
+		std::cout << &cat << std::endl;
+		std::cout << &deepCopyCat << std::endl;
+		deepCopyDog->makeSound();
+		delete cat;
+		delete deepCopyCat;
+		delete dog;
+		delete deepCopyDog;
+		std::cout << "end____________________________________________" << std::endl;
+	}
+	{	
+		std::cout << "\nDeep Cat Copy test" << std::endl;
+		std::cout << "_______________________________________________" << std::endl;
+		Cat *basic = new Cat();
+		Cat *temp = new Cat(*basic);
+		basic->makeSound();
+		temp->makeSound();
+		std::cout << "end____________________________________________" << std::endl;
+		delete basic;
+		delete temp;
+	}
+	{
+		std::cout << "\nDeep Dog Copy test" << std::endl;
+		std::cout << "_______________________________________________" << std::endl;
+		Dog basic;
+		Dog temp = basic;
+		basic.makeSound();
+		temp.makeSound();
+		std::cout << "end____________________________________________" << std::endl;
+	}
+}	
 

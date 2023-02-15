@@ -47,5 +47,20 @@ In the Dog and Cat classes, we have added a private object of type Brain. When w
 Additionally, as part of this exercise, we need to create an array of animals in which half of the objects are Dogs and the other half are Cats. We will then test if everything is working correctly.
 
 
+## Exercise 02 - Abstract class
 
+### Abstract classes
 
+	An abstract class is a type of class in object-oriented programming that cannot be instantiated directly. It is used as a base class or a super class, and is designed to be inherited by other classes. Abstract classes are often used to define a common interface for a group of related classes.
+
+	An abstract class contains one or more abstract methods, which are methods that do not have an implementation in the abstract class, but must be implemented by the subclasses that inherit from it. Abstract classes may also contain non-abstract methods, fields, and other members that are common to all subclasses.
+
+	To define an abstract class in C++, the class must be declared with the "abstract" keyword or at least one of its member functions must be declared as "pure virtual". A pure virtual function is a function that has no implementation in the base class and is declared with the "= 0" syntax at the end of the function declaration.
+
+	One of the main benefits of using abstract classes is to achieve abstraction and encapsulation, which allow the code to be more modular, extensible, and maintainable. By defining a common interface in the abstract class, the subclasses can inherit and implement the interface in a way that fits their specific needs while still retaining the same interface as other classes.
+
+	In summary, abstract classes are an important concept in object-oriented programming that provide a way to define a common interface and promote code reuse and maintainability.
+
+In this exercise, we need to convert class A to an abstract class, which affects all other classes that inherit from the Animal class, including the Animal class itself. To accomplish this, we have included the letter A in the Animal class name, creating a new class called AAnimal. We have also changed the virtual method makeSound() to receive a value of 0, indicating that there is no implementation of this method in the parent class. As a result, all classes that inherit from AAnimal must implement their own version of the makeSound() method.
+
+## Exercise 03 - Interface & recap

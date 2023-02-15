@@ -37,3 +37,4 @@ const std::string& AAnimal::getType() const
 	std::cout << "Animal getter called" << std::endl;
 	return this->type;
 }
+

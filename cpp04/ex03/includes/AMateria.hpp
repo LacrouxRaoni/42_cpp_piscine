@@ -20,7 +20,6 @@ class AMateria
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);
 };
-
 std::ostream& operator<<(std::ostream &lhs, AMateria& rhs);
 
 #endif
