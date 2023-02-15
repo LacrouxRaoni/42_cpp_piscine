@@ -35,9 +35,16 @@ We can see the result in terminal:
 ![terminal.eg](images/cpp04_ex00.png)
 
 
-
-
 ## Exercise 01 - I don’t want to set the world on fire
+
+### Deep Copy
+	In C++, a deep copy is a type of copying that creates a new object and then copies the values of all the fields or data members of the original object to the new object. In other words, a deep copy creates an independent, duplicate copy of an object, with its own memory allocation
+
+In this exercise, we are working with the same classes as before, as well as a new class called Brain. The Brain class contains a private array of 100 strings called "ideas".
+
+In the Dog and Cat classes, we have added a private object of type Brain. When we create an object of type Dog or Cat, the Brain object created in each object must be a deep copy of the original. If we create just a shallow copy, the Brain object will share the same memory address with the copied one. This situation serves as a great example of the orthodox canonical class use.
+
+Additionally, as part of this exercise, we need to create an array of animals in which half of the objects are Dogs and the other half are Cats. We will then test if everything is working correctly.
 
 
 
