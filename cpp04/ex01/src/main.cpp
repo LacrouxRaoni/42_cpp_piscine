@@ -61,5 +61,12 @@ int main(void){
 		temp.makeSound();
 		std::cout << "end____________________________________________" << std::endl;
 	}
+	{
+		Cat cat;
+		Cat cat2(cat);
+
+		Cat *tmp = &cat2;
+		std::cout << tmp->getType() << std::endl;
+	}
 }	
 

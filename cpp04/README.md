@@ -76,7 +76,36 @@ In this exercise, we need to convert class A to an abstract class, which affects
 
 Since we are currently working with C++98, interfaces are not natively supported. However, we can still create our own interfaces to better understand their functionality and potential usefulness in our code.
 
-In this exercise, we will have a RPG charecter using magics to attack or get healed. 
+In this exercise, we will create RPG characters with different classes such as Ice, Heal, and MateriaSource. We will also be working with an abstract class called Materia and interfaces called ICharacter and IMateriaSource.
 
-So: 
+The Ice and Heal classes inherit from the AMateria class and both have their own 'clone' methods that return new Ice or Heal Materia objects. These Materia objects can be used to target the ICharacter interface
 
+
+The Character class inherits from the ICharacter interface and contains a string name as well as two arrays - one with a size of 4 to store materias, and another with a size of 50 to hold dropped materias.
+
+The class includes three methods:
+
+1. equip(): This method equips new materias. If the inventory is full, the method does not store the new materia and returns no message.
+
+2. unequip(): This method is used to unequip a stored materia. Since we cannot delete the materia, it is instead stored in the dropped materia array.
+
+3. use(): This method uses a materia and requires the slot index and an ICharacter target to be passed as arguments.
+
+
+The MateriaSource class inherits from IMateriaSource and contains a size 4 array of Materia called materiaSlot. This class includes two methods:
+
+1. learnMateria(): This method receives an AMateria object to store in the array. If the array is full, the method does not add the new AMateria object and does not return any message. This method provides a template to create new Materia objects as needed.
+
+2. createMateria(): This method receives a string and checks if the string matches one of the values in materiaSlots. Them it returns a materia Ice or Cure. If the string does not match any values, nothing happens.
+
+There are several tests in the main function to verify the following functionalities:
+
+1. Deep copy: This tests whether copying one object into another creates a deep copy of the original object or not.
+
+2. Polymorphic object creation: This tests whether creating Materia objects using polymorphism works correctly.
+
+3. Materia usage in Character: This tests whether Materia can be included in a Character object and used correctly.
+
+4. Materia usage in Enemy classes: This tests whether Materia can be used in Enemy classes and whether it functions correctly.
+
+Although this exercise is lengthy, it is very helpful in understanding various topics covered in the module.

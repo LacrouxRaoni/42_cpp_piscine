@@ -9,7 +9,7 @@ Cat::Cat() : AAnimal("Cat")
 Cat::Cat(const Cat& cat) : AAnimal(cat)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
-	this->brain = new Brain();
+	this->brain = new Brain(*cat.brain);
 	*this = cat;
 }
 
@@ -23,16 +23,20 @@ Cat& Cat::operator=(Cat const& cat)
 	std::cout << "Cat operator constructor called" << std::endl;
 	if (this != &cat)
 	{
+		if (this->brain != NULL)
+			delete this->brain;
+		this->brain = new Brain(*cat.brain);
 		this->type = cat.getType();
-		*this->brain = cat.getBrain();
 	}
 	return *this;
 }
 
-void Cat::makeSound() {
+void Cat::makeSound() 
+{
 	std::cout << this->getType() << ": meaaaaowww" << std::endl;
 }
 
-Brain& Cat::getBrain() const{
+Brain& Cat::getBrain() const
+{
 	return *this->brain;
 }

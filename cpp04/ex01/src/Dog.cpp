@@ -23,7 +23,9 @@ Dog& Dog::operator=(Dog const& dog)
 	std::cout << "Dog operator constructor called" << std::endl;
 	if (this != &dog)
 	{
-		*this->brain = dog.getBrain();
+		if (this->brain != NULL)
+			delete this->brain;
+		this->brain = new Brain(*dog.brain);
 		this->type = dog.getType();
 	}
 	return *this;

@@ -23,8 +23,10 @@ Cat& Cat::operator=(Cat const& cat)
 	std::cout << "Cat operator constructor called" << std::endl;
 	if (this != &cat)
 	{
+		if (this->brain != NULL)
+			delete this->brain;
+		this->brain = new Brain(*cat.brain);
 		this->type = cat.getType();
-		*this->brain = cat.getBrain();
 	}
 	return *this;
 }
