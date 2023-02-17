@@ -24,8 +24,7 @@ Ice& Ice::operator=(Ice const& ice)
 }
 
 AMateria* Ice::clone() const{
-	AMateria* ice = new Ice();
-	return ice;
+	return (new Ice());
 }
 
 void Ice::use(ICharacter& target) {

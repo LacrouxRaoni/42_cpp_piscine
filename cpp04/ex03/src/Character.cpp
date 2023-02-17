@@ -8,7 +8,6 @@ Character::Character()
 	for (int i = 0; i < 50; i++){
 		droppedMateria[i] = NULL;
 	}
-
 }
 
 Character::Character(std::string name)
@@ -25,7 +24,8 @@ Character::Character(std::string name)
 Character::~Character()
 {
 	for (int i = 0; i < 4; i++){
-		delete slot[i];
+		if (this->slot[i] != NULL)
+			delete this->slot[i];
 	}
 	for (int i = 0; i < 50; i++){
 		delete droppedMateria[i];
@@ -34,6 +34,8 @@ Character::~Character()
 
 Character::Character(const Character& character)
 {
+	for (int i = 0 ; i < 4; i++)
+		this->slot[i] = NULL;
 	*this = character;
 }
 
@@ -43,7 +45,12 @@ Character& Character::operator=(Character const& character)
 	{
 		this->name = character.getName();
 		for (int i = 0; i < 4; i++){
-			this->slot[i] = NULL;
+			if (this->slot[i] != NULL){
+				delete this->slot[i];
+				this->slot[i] = NULL;
+			}
+			if (character.slot[i] != NULL)
+				this->slot[i] = character.slot[i]->clone();
 		}
 		for (int i = 0; i < 50; i++){
 			this->droppedMateria[i] = NULL;
@@ -60,26 +67,36 @@ std::string const& Character::getName() const
 void Character::equip(AMateria* m)
 {
 	for (int i = 0; i < 4; i++){
-		if (slot[i] == NULL){
-			slot[i] = m;	
-			break ;
+		if (this->slot[i] == NULL){
+			this->slot[i] = m;	
+			return ;
+		}
+	}
+	for (int i = 0; i < 50; i++){
+		if (droppedMateria[i] == NULL)
+		{
+			droppedMateria[i] = m;
+			return ;
 		}
 	}
 }
 
 void Character::unequip(int idx)
 {
-	for (int i = 0; i < 50; i++){
-		if (droppedMateria[i] == NULL)
-		{
-			droppedMateria[i] = this->slot[idx];
-			break ;
+	if (idx >= 0 && idx < 4){
+		for (int i = 0; i < 50; i++){
+			if (this->droppedMateria[i] == NULL)
+			{
+				this->droppedMateria[i] = this->slot[idx];
+				this->slot[idx] = NULL;
+				break ;
+			}
 		}
 	}
-	this->slot[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	this->slot[idx]->use(target);
+	if (this->slot[idx] != NULL)
+		this->slot[idx]->use(target);
 }

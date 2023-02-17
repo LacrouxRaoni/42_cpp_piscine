@@ -16,6 +16,7 @@ AMateria::AMateria(const AMateria& materia){
 
 AMateria& AMateria::operator=(AMateria const& materia){
 	if (this != &materia){
+		
 		this->type = materia.getType();
 	}
 	return *this;

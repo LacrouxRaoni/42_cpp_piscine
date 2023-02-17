@@ -65,3 +65,18 @@ In this exercise, we need to convert class A to an abstract class, which affects
 
 ## Exercise 03 - Interface & recap
 
+### Interfaces
+	In object-oriented programming, an interface is a collection of method signatures (i.e., method names, return types, and arguments) that a class can implement. An interface defines a contract between the interface and the implementing class, specifying the behavior that the implementing class must provide.
+
+	Interfaces allow for polymorphism, which is the ability of different objects to be treated as if they have the same type, as long as they implement the same interface. This allows for greater flexibility and reusability in code, as different objects can be used interchangeably as long as they implement the same interface.
+
+	In Java, interfaces are declared using the "interface" keyword, and methods in the interface are by default abstract and public. Classes can then implement an interface using the "implements" keyword, and must provide implementations for all of the methods declared in the interface.
+
+	Interfaces are often used to define contracts for common behaviors or operations that can be shared across multiple classes. For example, the Java Collections Framework defines a number of interfaces such as List, Set, and Map, which define common methods and behaviors for collections of data.
+
+Since we are currently working with C++98, interfaces are not natively supported. However, we can still create our own interfaces to better understand their functionality and potential usefulness in our code.
+
+In this exercise, we will have a RPG charecter using magics to attack or get healed. 
+
+So: 
+
