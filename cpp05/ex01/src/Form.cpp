@@ -1,21 +1,21 @@
 #include "Form.hpp"
 
-Form::Form() : name("Default"), signedForm(false), grade(1), gradeToSign(1)
+Form::Form() : name("Default"), signedForm(false), gradeToExec(1), gradeToSign(1)
 {
 }
 
-Form::Form(std::string name, int grade, int gradeToSign) : name(name), signedForm(false), grade(grade), gradeToSign(gradeToSign)
+Form::Form(std::string name, int gradeToExec, int gradeToSign) : name(name), signedForm(false), gradeToExec(gradeToExec), gradeToSign(gradeToSign)
 {
-	if (grade < 1 || gradeToSign < 1)
+	if (this->gradeToExec < 1 || this->gradeToSign < 1)
 		throw GradeTooHighException();
-	if (grade > 150 || gradeToSign > 150)
+	if (this->gradeToExec > 150 || this->gradeToSign > 150)
 		throw GradeTooLowException();
 }
 
 Form::~Form(){
 }
 
-Form::Form(const Form& form) : name(form.getName()), signedForm(form.getSignedForm()), grade(form.getGrade()), gradeToSign(form.getGradeToSign())
+Form::Form(const Form& form) : name(form.getName()), signedForm(form.getSignedForm()), gradeToExec(form.getGradeToExec()), gradeToSign(form.getGradeToSign())
 {
 	*this = form;
 }
@@ -39,9 +39,9 @@ bool Form::getSignedForm() const
 	return this->signedForm;
 }
 
-int Form::getGrade() const
+int Form::getGradeToExec() const
 {
-	return this->grade;
+	return this->gradeToExec;
 }
 
 int Form::getGradeToSign() const

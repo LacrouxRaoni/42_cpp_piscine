@@ -11,7 +11,7 @@ class Form
 	private:
 		const std::string name;
 		bool signedForm;
-		const int grade;
+		const int gradeToExec;
 		const int gradeToSign;
 	public:
 		Form();
@@ -21,7 +21,7 @@ class Form
 		Form& operator=(const Form& form);
 		const std::string& getName() const;
 		bool getSignedForm() const;
-		int getGrade() const;
+		int getGradeToExec() const;
 		int getGradeToSign() const;
 		void beSigned(const Bureaucrat &bureaucrat);		
 		

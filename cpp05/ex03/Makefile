@@ -7,7 +7,7 @@ HEADERS         =	includes/
 
 CC   			=	c++
 RM   			=	rm -rf
-FLAGS			=	-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+FLAGS			=	-Wall -Wextra -Werror -std=c++98
 
 
 SRC_FILES		=	main.cpp\

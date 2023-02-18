@@ -5,11 +5,13 @@ int main(void){
 		AAnimal* animal1 = new Dog;
 		AAnimal* animal2 = new Cat;
 
+
+		Cat a = new AAnimal()
 		AAnimal* aanimals[2] = {animal1, animal2};
 		aanimals[0]->makeSound();
 		aanimals[1]->makeSound();
 
-
+	
 
 		delete animal1;
 		delete animal2;
