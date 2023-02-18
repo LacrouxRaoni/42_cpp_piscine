@@ -7,7 +7,7 @@ AForm* Intern::makeForm(std::string formName, std::string target)
 	int i;
 
 	i = 0;
-	while (defaultFormName[i].compare(formName) != 0 && i < 3)
+	while (i < 3 && defaultFormName[i].compare(formName) != 0)
 		i++;
 	switch(i)
 	{

@@ -6,6 +6,21 @@
 #include "Intern.hpp"
 
 int main(void){
+	{
+		AForm* rrf;
+		try {
+			Bureaucrat bureaucrat1("Raoni", 136);
+			Intern someRandomIntern;
+			rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+			rrf->beSigned(bureaucrat1);
+		}
+		catch (std::exception &e){
+			std::cout << e.what() << std::endl;
+		}
+		delete rrf;
+	}
+
+
 	Bureaucrat bureaucrat1("Raoni", 136);
 	ShrubberyCreationForm form("Pudim");
 	ShrubberyCreationForm *formSh = new ShrubberyCreationForm("PudimSig");
