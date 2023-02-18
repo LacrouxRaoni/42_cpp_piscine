@@ -65,7 +65,14 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
 
 void AForm::execute(Bureaucrat const& executor) const
 {
-	(void)executor;
+	if (executor.getGrade() > this->getGradeToExec())
+	{
+		throw GradeTooLowException();
+	}
+	if (this->getSignedForm() == false)
+	{
+		throw FormNotSignedException();
+	}
 }
 
 std::ostream& operator<<(std::ostream &rhs, const AForm &lhs){

@@ -59,53 +59,23 @@ This exercise is designed to help you practice using try-catch blocks and to lea
 
 ## Exercise 02 - No, you need form 28B, not 28C...
 
+Now is the time to create three forms for the Bureaucrat to sign.
+
+Firstly, the Form class is now abstract and is called AForm. Additionally, a new virtual method called ```execute()``` has been added. This method checks if the form can be signed, allowing child classes to execute their methods. If the form cannot be signed, an exception is thrown.
+
+There are three child classes that inherit from AForm and have a string called ```target```. Additionally, their constructor receives the ```target``` parameter when requested.
 
 
-## Exercise 03 - Interface & recap
+The first child class is called ShrubberyCreationForm. To sign this form, the grade must be above 146, and to execute it, the grade must be above 138. If the form is signed, the execute() method will create a file with the name "```target```_shrubbery" in the working directory and write an ASCII Christmas tree inside it.
 
-### Interfaces
-	In object-oriented programming, an interface is a collection of method signatures (i.e., method names, return types, and arguments) that a class can implement. An interface defines a contract between the interface and the implementing class, specifying the behavior that the implementing class must provide.
+The second child class is called RobotomyRequestForm. To sign this form, the grade must be above 73, and to execute it, the grade must be above 46. If the form is signed, the execute() method will attempt to robotomize the ```target```. There is a 50% chance of success, so a success or failure message will be displayed accordingly.
 
-	Interfaces allow for polymorphism, which is the ability of different objects to be treated as if they have the same type, as long as they implement the same interface. This allows for greater flexibility and reusability in code, as different objects can be used interchangeably as long as they implement the same interface.
+The third and last class is called PresidentialPardonForm. To sign this form, the grade must be above 26, and to execute it, the grade must be above 6. If the form is signed, the execute() method will display the message "The ```target``` has been pardoned by Zaphod Beeblebrox".
 
-	In Java, interfaces are declared using the "interface" keyword, and methods in the interface are by default abstract and public. Classes can then implement an interface using the "implements" keyword, and must provide implementations for all of the methods declared in the interface.
+Finally, the Bureaucrat class now has the ```executeForm()``` method, where the bureaucrat attempts to sign the form. This method displays a message on the terminal indicating whether the form has been signed and executed successfully.
 
-	Interfaces are often used to define contracts for common behaviors or operations that can be shared across multiple classes. For example, the Java Collections Framework defines a number of interfaces such as List, Set, and Map, which define common methods and behaviors for collections of data.
-
-Since we are currently working with C++98, interfaces are not natively supported. However, we can still create our own interfaces to better understand their functionality and potential usefulness in our code.
-
-In this exercise, we will create RPG characters with different classes such as Ice, Heal, and MateriaSource. We will also be working with an abstract class called Materia and interfaces called ICharacter and IMateriaSource.
-
-The Ice and Heal classes inherit from the AMateria class and both have their own 'clone' methods that return new Ice or Heal Materia objects. These Materia objects can be used to target the ICharacter interface
+There are tests in the main function to demonstrate the attempt to sign and execute each form.
 
 
-The Character class inherits from the ICharacter interface and contains a string name as well as two arrays - one with a size of 4 to store materias, and another with a size of 50 to hold dropped materias.
+## Exercise 03 - At least this beats coffee-making
 
-The class includes three methods:
-
-1. equip(): This method equips new materias. If the inventory is full, the method does not store the new materia and returns no message.
-
-2. unequip(): This method is used to unequip a stored materia. Since we cannot delete the materia, it is instead stored in the dropped materia array.
-
-3. use(): This method uses a materia and requires the slot index and an ICharacter target to be passed as arguments.
-
-
-The MateriaSource class inherits from IMateriaSource and contains a size 4 array of Materia called materiaSlot. This class includes two methods:
-
-1. learnMateria(): This method receives an AMateria object to store in the array. If the array is full, the method does not add the new AMateria object and does not return any message. This method provides a template to create new Materia objects as needed.
-
-2. createMateria(): This method receives a string and checks if the string matches one of the values in materiaSlots. Them it returns a materia Ice or Cure. If the string does not match any values, nothing happens.
-
-There are several tests in the main function to verify the following functionalities:
-
-1. Deep copy: This tests whether copying one object into another creates a deep copy of the original object or not.
-
-2. Polymorphic object creation: This tests whether creating Materia objects using polymorphism works correctly.
-
-3. Materia usage in Character: This tests whether Materia can be included in a Character object and used correctly.
-
-4. Materia usage in Enemy classes: This tests whether Materia can be used in Enemy classes and whether it functions correctly.
-
-Although this exercise is lengthy, it is very helpful in understanding various topics covered in the module.
-
-![terminal.eg](images/cpp04_ex00.png)

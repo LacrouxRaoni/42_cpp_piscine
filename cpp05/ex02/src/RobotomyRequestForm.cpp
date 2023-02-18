@@ -35,26 +35,13 @@ std::string RobotomyRequestForm::getTarget()
 
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
-	if (executor.getGrade() > this->getGradeToExec())
-	{
-		throw GradeTooLowException();
-	}
-	if (this->getSignedForm() == false)
-	{
-		throw FormNotSignedException();
-	}
+	AForm::execute(executor);
+
+	srand(0);
+	std::cout << "drilling noises" << std::endl;
+	if (rand() % 2)
+		std::cout << target << " has been robotomized successfully." << std::endl;
 	else
-	{
-		srand(0);
-		if (rand() % 2)
-		{
-			std::cout << "drilling noises" << std::endl;
-			std::cout << target << " has been robotomized successfully." << std::endl;
-		}
-		else
-		{
-			std::cout << "drilling noises" << std::endl;
-			std::cout << target << " robotomy failed.." << std::endl;
-		}
-	}
+		std::cout << target << " robotomy failed.." << std::endl;
+
 }
