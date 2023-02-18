@@ -79,3 +79,10 @@ There are tests in the main function to demonstrate the attempt to sign and exec
 
 ## Exercise 03 - At least this beats coffee-making
 
+Now that we have many forms to sign, the bureaucrat is complaining about having to create them. As a result, the company hired an intern who can create these forms, and the bureaucrat can work with them if there's something wrong.
+
+So now we have a new class called "Intern". This class has only one method, called makeForm(). It receives two parameters: the form name and the target. The method has an array of AForm with all the possible forms, including ShrubberyCreationForm.hpp, RobotomyRequestForm.hpp, and PresidentialPardonForm.hpp.
+
+The method will compare the value of the formName and create a new form if the name is valid. Otherwise, it will throw an exception. There is also a subclass responsible for the Intern exception.
+
+All the other classes work as before, and there are many tests in the main method.
