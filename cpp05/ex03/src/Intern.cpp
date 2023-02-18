@@ -25,3 +25,8 @@ AForm* Intern::makeForm(std::string formName, std::string target)
 	}
 	return form;
 }
+
+const char* Intern::InterException::what() const throw()
+{
+	return "Form doesn't exist";
+}

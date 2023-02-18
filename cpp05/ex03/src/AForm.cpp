@@ -75,6 +75,31 @@ void AForm::execute(Bureaucrat const& executor) const
 	}
 }
 
+const char* AForm::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high";
+}
+
+const char* AForm::GradeTooLowException::what() const throw()
+{
+	return "Grade is too low";
+}
+
+const char* AForm::FormNotSignedException::what() const throw()
+{
+	return "Form not signed yet";
+}
+
+const char* AForm::FormSignedException::what() const throw()
+{
+	return "Form has been signed already";
+}
+
+const char* AForm::OpenFileException::what() const throw()
+{
+	return "File can't be opened";
+}
+
 std::ostream& operator<<(std::ostream &rhs, const AForm &lhs){
 	rhs << lhs;
 	return rhs;

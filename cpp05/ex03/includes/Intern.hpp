@@ -14,10 +14,7 @@ class Intern
 		class InterException : public std::exception
 		{
 			public:
-				const char* what() const throw()
-				{
-					return "Form doesn't exist";
-				}
+				const char* what() const throw();
 		};
 };
 

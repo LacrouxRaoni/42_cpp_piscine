@@ -27,10 +27,13 @@ int main(void){
 
 	//test3 - increment & decrement ok
 	try{
+		std::cout << "before decrement: " << bureaucrat1 << std::endl;
 		bureaucrat1.decrementBureaucratGrade();
+		std::cout << "after decrement: " << bureaucrat1 << std::endl;
+
+		std::cout << "before increment: " << bureaucrat2 << std::endl;
 		bureaucrat2.incrementBureaucratGrade();
-		std::cout << bureaucrat1 << std::endl;
-		std::cout << bureaucrat2 << std::endl;
+		std::cout << "after increment: " << bureaucrat2 << std::endl;
 	}
 	catch(std::exception &e)
 	{
