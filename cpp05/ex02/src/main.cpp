@@ -9,22 +9,22 @@ int main(void){
 	ShrubberyCreationForm form("Pudim");
 	ShrubberyCreationForm *formSh = new ShrubberyCreationForm("PudimSig");
 
-
 	//test1 ShrubberyCreationForm not signet yet
-	std::cout << "test1 ShrubberyCreationForm" << std::endl;
+	std::cout << "test1 ShrubberyCreationForm not signet yet" << std::endl;
 	bureaucrat1.executeForm(form);
 
 	//test2 ShrubberyCreationForm will be signed and executed
-	std::cout << "\ntest2 ShrubberyCreationForm" << std::endl;
+	std::cout << "\ntest2 ShrubberyCreationForm will be signed and executed" << std::endl;
 	bureaucrat1.signForm(form);
 	bureaucrat1.executeForm(form);
-	
+
+
 	//test3 ShrubberyCreationForm signed already
-	std::cout << "\ntest3 ShrubberyCreationForm" << std::endl;
+	std::cout << "\ntest3 ShrubberyCreationForm signed already" << std::endl;
 	bureaucrat1.signForm(form);
 
 	//test4 ShrubberyCreationForm can't be executed;
-	std::cout << "\ntest4 ShrubberyCreationForm" << std::endl;
+	std::cout << "\ntest4 ShrubberyCreationForm can't be executed" << std::endl;
 	while (bureaucrat1.getGrade() < 150)
 		bureaucrat1.decrementBureaucratGrade();
 	bureaucrat1.executeForm(form);
@@ -121,4 +121,6 @@ int main(void){
 	std::cout << "Contract Signed status: " << formPres1->getSignedForm() << std::endl; 
 	bureaucrat1.executeForm(*formPres1);
 	delete formPres1;
+
+	return (0);
 }

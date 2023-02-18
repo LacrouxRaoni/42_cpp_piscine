@@ -1,21 +1,21 @@
 #include "AForm.hpp"
 
-AForm::AForm() : name("Default"), signedForm(false), grade(1), gradeToSign(1)
+AForm::AForm() : name("Default"), signedForm(false), gradeToExec(1), gradeToSign(1)
 {
 }
 
-AForm::AForm(std::string name, int grade, int gradeToSign) : name(name), signedForm(false), grade(grade), gradeToSign(gradeToSign)
+AForm::AForm(std::string name, int gradeToExec, int gradeToSign) : name(name), signedForm(false), gradeToExec(gradeToExec), gradeToSign(gradeToSign)
 {
-	if (grade < 1 || gradeToSign < 1)
+	if (gradeToExec < 1 || gradeToSign < 1)
 		throw GradeTooHighException();
-	if (grade > 150 || gradeToSign > 150)
+	if (gradeToExec > 150 || gradeToSign > 150)
 		throw GradeTooLowException();
 }
 
 AForm::~AForm(){
 }
 
-AForm::AForm(const AForm& form) : name(form.getName()), signedForm(form.getSignedForm()), grade(form.getGrade()), gradeToSign(form.getGradeToSign())
+AForm::AForm(const AForm& form) : name(form.getName()), signedForm(form.getSignedForm()), gradeToExec(form.getGradeToExec()), gradeToSign(form.getGradeToSign())
 {
 	*this = form;
 }
@@ -24,7 +24,7 @@ AForm& AForm::operator=(const AForm& form)
 {
 	if (this != &form)
 	{
-		this->signedForm = form.signedForm;
+		this->signedForm = form.getSignedForm();
 	}
 	return *this;
 }
@@ -39,14 +39,19 @@ bool AForm::getSignedForm() const
 	return this->signedForm;
 }
 
-int AForm::getGrade() const
+int AForm::getGradeToExec() const
 {
-	return this->grade;
+	return this->gradeToExec;
 }
 
 int AForm::getGradeToSign() const
 {
 	return this->gradeToSign;
+}
+
+void AForm::setSignedForm(bool signedForm)
+{
+	this->signedForm = signedForm;
 }
 
 void AForm::beSigned(const Bureaucrat &bureaucrat)

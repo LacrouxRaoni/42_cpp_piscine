@@ -13,7 +13,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& presidentialPardonForm) : AForm(presidentialPardonForm)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& presidentialPardonForm) : AForm(presidentialPardonForm.getName(), presidentialPardonForm.getGradeToSign(), presidentialPardonForm.getGradeToExec())
 {
 	*this = presidentialPardonForm;
 }
@@ -22,6 +22,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm
 {
 	if (this != &presidentialPardonForm)
 	{
+		this->setSignedForm(presidentialPardonForm.getSignedForm());
 		this->target = presidentialPardonForm.getTarget();
 	}
 	return *this;

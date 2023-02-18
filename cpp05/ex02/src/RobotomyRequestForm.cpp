@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm()
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
 {
 }
 
@@ -13,7 +13,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& robotomyRequestForm) : AForm(robotomyRequestForm)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& robotomyRequestForm) : AForm(robotomyRequestForm.getName(), robotomyRequestForm.getGradeToSign(), robotomyRequestForm.getGradeToExec())
 {
 	*this = robotomyRequestForm;
 }
@@ -22,6 +22,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& robotom
 {
 	if (this != &robotomyRequestForm)
 	{
+		this->setSignedForm(robotomyRequestForm.getSignedForm());
 		this->target = robotomyRequestForm.getTarget();
 	}
 	return *this;
@@ -34,7 +35,7 @@ std::string RobotomyRequestForm::getTarget()
 
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
-	if (executor.getGrade() > this->getGrade())
+	if (executor.getGrade() > this->getGradeToExec())
 	{
 		throw GradeTooLowException();
 	}

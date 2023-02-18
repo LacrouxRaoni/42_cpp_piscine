@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm()
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
 {
 }
 
@@ -13,7 +13,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& shrubberyCreationForm) : AForm(shrubberyCreationForm)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& shrubberyCreationForm) : AForm(shrubberyCreationForm.getName(), shrubberyCreationForm.getGradeToSign(), shrubberyCreationForm.getGradeToExec())
 {
 	*this = shrubberyCreationForm;
 }
@@ -21,7 +21,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& shrubberyCre
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& shrubberyCreationForm)
 {
 	if (this != &shrubberyCreationForm)
-	{
+	{		
+		this->setSignedForm(shrubberyCreationForm.getSignedForm());
 		this->target = shrubberyCreationForm.getTarget();
 	}
 	return *this;
@@ -34,7 +35,7 @@ std::string ShrubberyCreationForm::getTarget()
 
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-	if (executor.getGrade() > this->getGrade())
+	if (executor.getGrade() > this->getGradeToExec())
 	{
 		throw GradeTooLowException();
 	}
