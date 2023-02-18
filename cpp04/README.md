@@ -108,4 +108,6 @@ There are several tests in the main function to verify the following functionali
 
 4. Materia usage in Enemy classes: This tests whether Materia can be used in Enemy classes and whether it functions correctly.
 
-Although this exercise is lengthy, it is very helpful in understanding various topics covered in the module.
+Although this exercise may be lengthy, it is very helpful in understanding various topics covered in the module. To help visualize the class structure, we have included a UML diagram below which shows all the classes and their inheritances:
+
+![uml.eg](images/uml_ex03)
