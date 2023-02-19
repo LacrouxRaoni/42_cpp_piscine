@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="images/grade.png" alt="grade " />
+</p>
+
+
 # Module 01
 
 Module 01 is divided in seven exercises. 

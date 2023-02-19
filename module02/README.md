@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="images/grade.png" alt="grade " />
+</p>
+
+
 # Module 02
 
 Module 02 is divided in four exercises. 

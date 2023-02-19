@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/grade.png" alt="grade " />
+</p>
+
 # Module 04
 
 Module 04 is divided in four exercises.
