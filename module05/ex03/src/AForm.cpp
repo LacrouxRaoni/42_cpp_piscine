@@ -100,7 +100,7 @@ const char* AForm::OpenFileException::what() const throw()
 	return "File can't be opened";
 }
 
-std::ostream& operator<<(std::ostream &rhs, const AForm &lhs){
-	rhs << lhs;
-	return rhs;
+std::ostream& operator<<(std::ostream &lhs, const Form &rhs){
+	lhs << "Form name: " << rhs.getName() << " Grade to exec: " << rhs.getGradeToExec() << " Grade to Sign" << rhs.getGradeToSign();
+	return lhs;
 }
