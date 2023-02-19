@@ -3,7 +3,7 @@
 AForm* Intern::makeForm(std::string formName, std::string target)
 {
 	AForm* form;
-	std::string defaultFormName[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	std::string defaultFormName[3] = {"shrubbery request", "robotomy request", "presidential request"};
 	int i;
 
 	i = 0;

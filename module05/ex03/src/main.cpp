@@ -9,10 +9,10 @@ int main(void){
 	{
 		AForm* rrf;
 		try {
-			Bureaucrat bureaucrat1("Raoni", 136);
+			std::cout << "test pdf" << std::endl;
 			Intern someRandomIntern;
-			rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
-			rrf->beSigned(bureaucrat1);
+			rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+			std::cout << rrf->getName() << std::endl;
 		}
 		catch (std::exception &e){
 			std::cout << e.what() << std::endl;
@@ -146,7 +146,7 @@ int main(void){
 	//test1 Inter will create ShrubberyCreationForm to be signed
 	std::cout << "\ntest1 Intern" << std::endl;
 
-	kidForm = inter.makeForm("ShrubberyCreationForm", "Pudim");
+	kidForm = inter.makeForm("shrubbery request", "Pudim");
 	kidForm->beSigned(bureaucrat1);
 	bureaucrat1.executeForm(*kidForm);
 	delete kidForm;
@@ -154,7 +154,7 @@ int main(void){
 	//test2 Inter will create RobotomyRequestForm to be signed
 	std::cout << "\ntest2 Intern" << std::endl;
 
-	kidForm = inter.makeForm("RobotomyRequestForm", "Pudim");
+	kidForm = inter.makeForm("robotomy request", "Pudim");
 	kidForm->beSigned(bureaucrat1);
 	bureaucrat1.executeForm(*kidForm);
 	delete kidForm;
@@ -162,7 +162,7 @@ int main(void){
 	//test3 Inter will create PresidentialPardonForm to be signed
 	std::cout << "\ntest3 Intern" << std::endl;
 
-	kidForm = inter.makeForm("PresidentialPardonForm", "Pudim");
+	kidForm = inter.makeForm("presidential request", "Pudim");
 	while (bureaucrat1.getGrade() > 4)
 		bureaucrat1.incrementBureaucratGrade();
 	kidForm->beSigned(bureaucrat1);

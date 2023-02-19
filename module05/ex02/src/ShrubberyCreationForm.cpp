@@ -1,10 +1,10 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("shrubbery form", 145, 137)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("shrubbery form", 145, 137)
 {
 	this->target = target;
 }
@@ -51,4 +51,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 		"			                                                 \n                       O                         \n                      ***                        \n                     **O**                       \n                    *******                      \n                   *********                     \n                  ***********                   \n                   ******o**                     \n                  ***********                    \n                 ****o********                   \n                ***************                  \n               ****o***o********                 \n              *******************                \n            ***********************              \n               *****O***********                 \n              **********o********                \n             ****************o****               \n            **O********************              \n           ***********o********O****             \n         *****************************           \n             *********************               \n            ***o*******************              \n           ***********o*******o*****             \n          ***************************            \n         ***********************O*****           \n        ***O***************************          \n      ***********************************        \n           *************************             \n          *******o********o**********            \n         *****************************           \n        **************o****************          \n       *************************O*******         \n      *****O*****************************        \n    **************o************************      \n          ***************************            \n         *************o***************           \n        ***********o*******************          \n       **************************O******         \n      ***o******************O************        \n    ***o***********o****************o******      \n                      ###                        \n                      ###                        \n                      ###                        \n                  ###########                    \n                  ###########    \n			"
 		 << std::endl;
 	}
+	file.close();
 }

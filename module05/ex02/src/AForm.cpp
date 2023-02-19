@@ -6,9 +6,9 @@ AForm::AForm() : name("Default"), signedForm(false), gradeToExec(1), gradeToSign
 
 AForm::AForm(std::string name, int gradeToExec, int gradeToSign) : name(name), signedForm(false), gradeToExec(gradeToExec), gradeToSign(gradeToSign)
 {
-	if (gradeToExec < 1 || gradeToSign < 1)
+	if (this->getGradeToExec() < 1 || this->getGradeToSign() < 1)
 		throw GradeTooHighException();
-	if (gradeToExec > 150 || gradeToSign > 150)
+	if (this->getGradeToExec() > 150 || this->getGradeToSign() > 150)
 		throw GradeTooLowException();
 }
 
