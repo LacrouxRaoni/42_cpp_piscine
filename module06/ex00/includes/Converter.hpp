@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include <limits>
+#include <iomanip>
 
 class Converter : public TypeFormat
 {

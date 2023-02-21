@@ -50,13 +50,22 @@ bool TypeFormat::isFloat(){
 		return true;
 	if (std::strchr( this->str.c_str(), '.') != NULL && std::strchr( this->str.c_str(), 'f') != NULL)
 	{
+		unsigned int j = 0;
 		for (unsigned int i = 0; i < this->str.length(); i++){
 			if (i == 0 && (this->str.at(0) == '+' || this->str.at(0) == '-'))
 				continue ;
-			if (this->str[i] == '.'){
-				if (this->str[this->str.length() - 1] != 'f' || !std::isdigit(this->str[this->str.length() - 2]))
+			if (this->str[i] == '.')
+			{
+				j = i;
+				if (this->str[this->str.length() - 1] != 'f')
 					return false;
+				break ;
 			}
+		}
+		while (++j < this->str.length() - 1)
+		{
+			if (!std::isdigit(this->str.at(j)))
+				return false;
 		}
 		return (this->str.find_first_of('.', 1) == this->str.find_last_of('.'));
 	}

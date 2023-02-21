@@ -19,7 +19,12 @@ FloatConverter::FloatConverter(double d){
 	this->d = d;
 	std::cout << "float: ";
 	if (this->d >= 1.17549e-038  && this->d <= 3.40282e+038)
-		std::cout << static_cast<float>(this->d) << ".0f" << std::endl;
+	{
+		if (d == static_cast<int>(d))
+			std::cout << static_cast<float>(this->d) << ".0f" << std::endl;
+		else
+			std::cout << std::fixed << std::setprecision(1) << static_cast<float>(this->d) << "f" << std::endl;
+	}
 	else
 		std::cout << "Impossible" << std::endl;
 }
@@ -89,5 +94,5 @@ void FloatConverter::printFloat(float f){
 		std::cout << static_cast<float>(f) << ".0f" << std::endl;
 	} 
 	else
-		std::cout << static_cast<float>(f) << "f" << std::endl;
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(f) << "f" << std::endl;
 }

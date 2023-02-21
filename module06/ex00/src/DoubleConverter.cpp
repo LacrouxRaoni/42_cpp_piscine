@@ -18,7 +18,10 @@ DoubleConverter::DoubleConverter(int i){
 DoubleConverter::DoubleConverter(float f){
 	this->f = f;
 	std::cout << "Double: ";
-	std::cout << static_cast<double>(this->f) << ".0" << std::endl;
+	if (f == static_cast<int>(f))
+		std::cout << static_cast<double>(this->f) << ".0" << std::endl;
+	else
+		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(this->f) << std::endl;
 }
 
 DoubleConverter::DoubleConverter(const DoubleConverter& doubleConverter)
@@ -89,6 +92,7 @@ void DoubleConverter::printDouble(double d)
 	if (static_cast<int>(d) == static_cast<double>(d)){
 		std::cout << static_cast<double>(d) << ".0" << std::endl;
 	} 
-	else
-		std::cout << static_cast<double>(d) << std::endl;
+	else{
+		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(d) << std::endl;
+	}
 }

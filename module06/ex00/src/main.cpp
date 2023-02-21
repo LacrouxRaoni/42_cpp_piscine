@@ -4,7 +4,7 @@ void tests(void);
 
 int main(int argc, char *argv[])
 {
-	if (std::string(argv[1]) == "-t")
+	if (argv[1] != NULL && std::string(argv[1]) == "-t")
 		tests();
 	else if (argc == 2){
 		Converter cnv(argv[1]);

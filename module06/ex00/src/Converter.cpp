@@ -45,6 +45,3 @@ void Converter::converterChecker(){
 	else
 		std::cout << "impossible" << std::endl;
 }
-
-
-
