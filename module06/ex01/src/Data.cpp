@@ -37,7 +37,6 @@ int Data::getAge()
 	return this->age;
 }
 
-
 uintptr_t Data::serialize(Data* ptr){
 	return reinterpret_cast<uintptr_t>(ptr);
 }

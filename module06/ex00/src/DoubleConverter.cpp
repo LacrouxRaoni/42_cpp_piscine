@@ -6,22 +6,19 @@ DoubleConverter::DoubleConverter(){
 DoubleConverter::DoubleConverter(char c){
 	this->c = c;
 	std::cout << "Double: ";
-	std::cout << static_cast<double>(this->c) << ".0" << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << static_cast<double>(this->c) << std::endl;
 }
 
 DoubleConverter::DoubleConverter(int i){
 	this->i = i;
 	std::cout << "Double: ";
-	std::cout << static_cast<double>(this->i) << ".0" << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << static_cast<double>(this->i) << std::endl;
 }
 
 DoubleConverter::DoubleConverter(float f){
 	this->f = f;
 	std::cout << "Double: ";
-	if (f == static_cast<int>(f))
-		std::cout << static_cast<double>(this->f) << ".0" << std::endl;
-	else
-		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(this->f) << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << static_cast<double>(this->f) << std::endl;
 }
 
 DoubleConverter::DoubleConverter(const DoubleConverter& doubleConverter)
@@ -35,9 +32,7 @@ DoubleConverter::~DoubleConverter(){
 DoubleConverter& DoubleConverter::operator=(DoubleConverter const& doubleConverter)
 {
 	if (this != &doubleConverter)
-	{
 		*this = doubleConverter;
-	}
 	return *this;
 }
 
@@ -59,10 +54,8 @@ void DoubleConverter::checkDoubleToConvert(std::string str)
 		printPseudoType(str.at(0), str.c_str());
 	else
 	{
-		if ((number >= 2.22507e-308 && number <= 1.79769e+308) || number == 0)
-		{
+		if ((number >= 2.22507e-308 && number <= 1.79769e+308) || (number >= -1.79769e+308 && number <= -2.22507e-308) || (number == 0))
 			convertToDouble(str);
-		}
 		else
 			std::cout << "Impossible" << std::endl;
 	}
@@ -89,10 +82,5 @@ void DoubleConverter::printPseudoType(int c, std::string str)
 void DoubleConverter::printDouble(double d)
 {
 	std::cout << "double: ";
-	if (static_cast<int>(d) == static_cast<double>(d)){
-		std::cout << static_cast<double>(d) << ".0" << std::endl;
-	} 
-	else{
-		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(d) << std::endl;
-	}
+	std::cout << std::fixed << std::setprecision(1) << static_cast<double>(d) << std::endl;
 }

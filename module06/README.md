@@ -41,11 +41,57 @@ In addition, a ```Converter``` class has been implemented, which inherits from `
 
 The ```converterCheck()``` method includes an if/else tree that calls the appropriate ```TypeFormat``` methods. When a method returns true, the method calls the appropriate class to perform either an upcasting or a downcasting operation based on the value's type for the four scalar types.
 
+There are classes for each scalar type, including:
+
+1. CharConverter
+2. IntConverter
+3. FloatConverter
+4. DoubleConverter.
+
+Each class has three variables that differ based on their respective types. Additionally, there are constructors in each class that receive variables of different types to facilitate upcasting or downcasting, depending on the data value.
 
 
-## Exercise 01
+## Exercise 01 Serialization
+
+### Serialization
+
+	Serialization is the process of converting an object's state into a form that can be stored or transmitted, typically as a sequence of bytes. The opposite process of creating an object from a serialized representation is called deserialization.
+
+	Serialization is commonly used in network communications and file storage to persist objects and transfer them between different systems or programming languages. For example, a Java program might serialize an object to transmit it over the network to a program written in a different programming language, which could then deserialize the object to reconstruct it and use its data.
+
+	In addition to simple serialization, there are many variations and extensions, such as XML and JSON serialization, binary serialization, and custom serialization protocols. The serialization process can also be customized by implementing special methods in the serialized classes or by using external libraries or frameworks.
 
 
+### Reinterpret Cast
 
-## Exercise 02 - 
+	reinterpret_cast is a type of C++ type casting operator that is used to convert one pointer or reference to another type of pointer or reference of a different type, without changing the underlying representation of the original object.
 
+	The reinterpret_cast operator is considered to be the most powerful and dangerous of the C++ type casting operators because it allows the programmer to bypass type safety and perform arbitrary conversions between unrelated types, even if such conversions may be undefined behavior or cause memory corruption or other errors.
+
+
+In this exercise, we have just one class called 'Data', which has a private string called 'name' and an integer called 'age'. In addition to the standard constructors, the class has two public methods for serialization and deserialization.
+
+The first method, 'uintptr_t serialize(Data* ptr)', receives a Data pointer as input and uses 'reinterpret_cast' to convert it into a 'uintptr_t', which is then returned.
+
+The second method, 'Data* deserialize(uintptr_t raw)', takes a 'uintptr_t' value as input, uses 'reinterpret_cast' to convert it back into a 'Data' object, and then returns the modified data.
+
+This is a simple example that demonstrates the basics of serialization."
+
+## Exercise 02 - Identify real type
+
+### Dynamic Cast
+
+	Dynamic cast is a C++ language feature that allows you to perform safe downcasting of polymorphic objects at runtime. It is typically used to determine the actual type of an object when you only have a pointer or reference to its base class. Dynamic cast can check if a cast from a base class pointer/reference to a derived class pointer/reference is valid, and can return null if the cast fails. It can also be used to perform upcasting or sidestepping of inheritance. In addition, dynamic cast can throw a bad_cast exception if the cast is not valid and the cast expression has been specified using the throw keyword. Overall, dynamic cast is a useful feature for working with complex object hierarchies in C++.
+	
+
+In the last exercise, we had four classes with minimal content. One class was called 'Base', with only a destructor, while the other classes ('A', 'B', and 'C') inherited from 'Base' but had no additional content.
+
+In 'main', there were three methods to cast these objects:
+
+1. 'Base generate(void)', which returned a random 'Base' of type 'A', 'B', or 'C'.
+2.  'void identify(Base* p)', which received a pointer of type 'Base', 'A', 'B', or 'C'. The 'if' statement checked whether dynamic casting of the pointer was successful, and if so, printed the class type.
+3. 'void identify(Base& p)', which received a reference of type 'Base', 'A', 'B', or 'C'. This method used dynamic casting with a 'try-catch' block to handle any exceptions. If the cast was successful, it printed the class type, and if not, it printed an error message.
+
+The 'if' tree in 'identify(Base* p)' was necessary because dynamic casting of the pointer could return null if it was not a valid cast. If the cast was successful, the 'identify' method printed the class type.
+
+This exercise served as a simple example of using dynamic casting to determine the type of an object at runtime.
