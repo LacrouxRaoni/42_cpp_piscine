@@ -7,6 +7,11 @@ int main(void)
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
+  
+	int *a = new int();
+	std::cout << *a << std::endl;
+	delete a;
+
     for (int i = 0; i < MAX_VAL; i++)
     {
         const int value = rand();
@@ -27,6 +32,7 @@ int main(void)
             return 1;
         }
     }
+
     try
     {
         numbers[-2] = 0;
@@ -35,7 +41,8 @@ int main(void)
     {
         std::cerr << e.what() << '\n';
     }
-    try
+    
+	try
     {
         numbers[MAX_VAL] = 0;
     }
@@ -48,7 +55,8 @@ int main(void)
     {
         numbers[i] = rand();
     }
-	numbers.print();
+	//numbers.print();
     delete [] mirror;//
+
     return 0;
 }

@@ -11,18 +11,12 @@ void iter(T *arrAdd, size_t size, void (*function)(T&))
 	}
 }
 
-
 template<typename T>
 void printElement(T element)
 {
 	std::cout << element << std::endl;
 }
 
-template<typename T>
-void printElement(T* element)
-{
-	std::cout << "aqui" << element << std::endl;
-}
 
 template<typename T>
 void sumElement(T &element)

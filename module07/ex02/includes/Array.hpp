@@ -9,7 +9,7 @@ class Array
 {
 	private:
 		T *arr;
-		int unsigned length;
+		unsigned int length;
 	public:
 		Array()  : arr(NULL), length(0)
 		{
@@ -28,14 +28,20 @@ class Array
 
 		~Array()
 		{
+			delete[] this->arr;
 		}
 
 		Array& operator=(Array const &array)
 		{
 			if (this != &array)
 			{
-				this->arr = array.arr;
+				if (this->arr != NULL)
+					delete[] this->arr;
+				this->arr = new T[array.length];
 				this->length = array.length;
+				for (unsigned int i = 0; i < array.length; i++){
+					this->arr[i] = array.arr[i];
+				}
 			}
 			return *this;
 		}
@@ -54,7 +60,6 @@ class Array
 					return "Index out of bounds";
 				}
 		};
-
 
 		unsigned int size() const
 		{

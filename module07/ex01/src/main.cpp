@@ -44,14 +44,4 @@ int main(void)
 	iter(arrFloat, size, printElement);
 	printMsg("");
 
-	printMsg("Test Pointer Array");
-	int a = 2;
-	int *arrIntPtr[2] = {&a, &a};
-	size = 2;
-	printMsg("Before Sum:");
-	iter(arrIntPtr, size, printElement);
-	iter(arrIntPtr, size, sumElement);
-	printMsg("After Sum:");
-	iter(arrIntPtr, size, printElement);
-	printMsg("");
 }
