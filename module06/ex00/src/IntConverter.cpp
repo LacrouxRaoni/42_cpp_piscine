@@ -12,7 +12,7 @@ IntConverter::IntConverter(char c){
 IntConverter::IntConverter(float f){
 	this->f = f;
 	std::cout << "int: ";
-	if (this->f >= -2147483648 && this->f <= 2147483647){
+	if (this->f >= -2147483648.0f && this->f <=  2147483647.0f){
 		std::cout << static_cast<int>(this->f) << std::endl;
 	}
 	else

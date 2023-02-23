@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="images/grade.png" alt="grade " />
-</p>
-
 # Module 06
 
 Module 06 is divided in three exercises.
