@@ -24,3 +24,22 @@ The iterator template can handle any type of array, and custom tests have been i
 
 ## Exercise 02
 
+In the last exercise, we created a template class called "Array". There are mandatory data that must be included in this array, which are explained below:
+
+There are two private attributes:
+
+1. ```T* arr ``` (which is an array of the template type).
+2.  ```unsigned int length ``` with the size of this array.
+
+In the public section, we have the following methods:
+
+- A standard constructor that sets  ```arr ``` and  ```length ``` to NULL.
+- A parameterized constructor that receives an unsigned int  ```n ```. This constructor instantiates a new array of type  ```T ``` with size  ```n ```.
+- A destructor to delete the  ```arr ```.
+- A copy constructor that performs a deep copy of the object received.
+- An  ```operator= ``` overload.
+- A  ```T& operator[] ``` that receives an integer index. This method checks if the index is out of range and throws an exception; otherwise, it returns  ```arr[index] ```.
+- A method  ```size() ``` that returns the  ```length ```.
+- Finally, a  ```print() ``` method that prints the data in  ```arr ```.
+
+The main method has tests to check if everything is working properly.
