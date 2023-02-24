@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/grade.png" alt="grade " />
+</p>
+
 # Module 07
 
 Module 07 is divided in three exercises.
@@ -22,7 +26,7 @@ In this exercise, we created our own iterator template that can receive three pa
 
 The iterator template can handle any type of array, and custom tests have been included in the main function.
 
-## Exercise 02
+## Exercise 02 - Array
 
 In the last exercise, we created a template class called "Array". There are mandatory data that must be included in this array, which are explained below:
 
