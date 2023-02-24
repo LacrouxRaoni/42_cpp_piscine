@@ -1,13 +1,11 @@
 #include "easyfind.hpp"
-#include <vector>
-#include <iterator>
-#include <algorithm>
-#include <iostream>
-\
+
 int main(void)
 {
-	std::vector<int> vec;
-	for (int i = 0; i < 3; i ++)
-		vec.insert(2, i);
-	easyfind();
+	srand(time(NULL));
+
+	std::vector<int> a;
+	a.assign(10, 42);
+	easyfind(a, 42);
+	easyfind(a, 33);
 }
