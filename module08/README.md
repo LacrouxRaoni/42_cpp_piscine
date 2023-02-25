@@ -34,6 +34,26 @@ The ```main``` method has tests with list, vector, and deque containers.
 However, it's worth noting that this method doesn't handle associative containers.
 
 ## Exercise 01 - Span
+In this exercise, we are creating a class called ```Span```. The ```Span``` class has the following:
+
+1. A private unsigned integer ```n```.
+2. A private ```std::list<int> lst```.
+3. A public constructor that sets ```n``` to 0.
+4. A parameterized constructor that receives an unsigned integer ```n```.
+5. A destructor.
+6. A copy constructor.
+7. An overloaded ```operator=```.
+8. A getter for ```n```.
+9. A method called ```addNumber()``` that receives a new integer ```new_n``` to add to the list. If the list is full, it throws an exception.
+10. A ```shortestSpan()``` method that returns the minimum range between the elements in the list.
+11. A ```longestSpan()``` method that returns the maximum range between the elements in the list.
+12. An ```addManyNumbers()``` method that receives a range of iterators from the beginning to the end to include elements in the Span list.
+13. A ```checkListElements()``` method that verifies if the element is empty or if it has only one element. If either of these conditions is true, it throws an exception.
+14. A subclass that inherits from ```std::exception``` to handle custom exceptions.
+
+The ```Span``` class stores a maximum of ```N``` elements in a list, and the ```shortestSpan()``` and ```longestSpan()``` methods check the range limits between the numbers.
+
+The ```std::list``` has the ```sort()``` method that makes it easier to check the range. The entire program follows an "STL style" to understand how to handle containers.
 
 ## Exercise 02 - 
 

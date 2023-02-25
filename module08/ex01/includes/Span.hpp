@@ -3,9 +3,9 @@
 
 #include <algorithm>
 #include <list>
-#include <vector>
 #include <iterator>
 #include <iostream>
+#include <time.h>
 
 class Span
 {
@@ -22,7 +22,7 @@ class Span
 		void addNumber(int new_n);
 		int shortestSpan();
 		int longestSpan();
-		void addManyNumbers(std::list<int> &l);
+		void addManyNumbers(std::list<int>::iterator itb, std::list<int>::iterator ite);
 		void checkListElements();
 		class SpanException : public std::exception
 		{

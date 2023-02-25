@@ -40,8 +40,8 @@ void Span::addNumber(int new_n)
 	else
 	{
 		this->lst.push_back(new_n);
-		this->lst.sort();
 	}
+	
 }
 
 int Span::shortestSpan()
@@ -66,19 +66,19 @@ int Span::longestSpan()
 
 }
 
-void Span::addManyNumbers(std::list<int> &l)
+void Span::addManyNumbers(std::list<int>::iterator itb, std::list<int>::iterator ite)
 {
-	if (l.size() > this->getN())
+	if (static_cast<unsigned int>(*ite) > this->getN())
 		throw SpanException("actual list is lowest than total elements received");
-	std::list<int>::iterator it = l.begin();
-	for (;it != l.end(); it++){
-		this->lst.push_back(*it);
+	for (;itb != ite; itb++){
+		this->addNumber(*itb);
 	}
 	this->lst.sort();
 }
 
 void Span::checkListElements()
 {
+	this->lst.sort();
 	if (this->lst.size() < 1)
 		throw SpanException("List is empty");
 	else if (this->lst.size() == 1)

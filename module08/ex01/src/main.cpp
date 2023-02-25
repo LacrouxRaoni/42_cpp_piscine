@@ -59,7 +59,7 @@ int main(void)
 			std::list<int> b;
 			for (int i = 0; i < 8; i++)
 				b.push_back(i);
-			c.addManyNumbers(b);
+			c.addManyNumbers(b.begin(), b.end());
 		}
 		catch (Span::SpanException &e)
 		{
@@ -72,9 +72,10 @@ int main(void)
 		{
 			Span c = Span(20000);
 			std::list<int> l;
+			std::srand(time(NULL));
 			for (int i = 0; i < 20000; i++)
-				l.push_back(i);
-			c.addManyNumbers(l);
+				l.push_back(rand());
+			c.addManyNumbers(l.begin(), l.end());
 			std::cout << c.shortestSpan() << std::endl;
 			std::cout << c.longestSpan() << std::endl;
 		}
