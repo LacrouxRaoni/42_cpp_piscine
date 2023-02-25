@@ -18,7 +18,7 @@ This is the final module of the CPP Piscine, where we learn about the Standard T
 
 	Containers are an essential part of C++ programming, providing a convenient and efficient way to store and manipulate collections of data. They are also an important part of the C++ Standard Template Library (STL), which provides a set of powerful and flexible algorithms and containers that can be used in a wide range of applications.
 
-## Exercise 00 - 
+## Exercise 00 - Easy find
 
 The first exercise is quite simple. We create a template method called ```easyfind()```.
 
@@ -33,7 +33,7 @@ The ```main``` method has tests with list, vector, and deque containers.
 
 However, it's worth noting that this method doesn't handle associative containers.
 
-## Exercise 01 - 
+## Exercise 01 - Span
 
 ## Exercise 02 - 
 
