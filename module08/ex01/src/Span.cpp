@@ -48,7 +48,7 @@ int Span::shortestSpan()
 	checkListElements();
 	std::list<int>::iterator it = this->lst.begin();
 	int min_distance = this->lst.back();
-	for (++it; it != this->lst.end(); ++it)
+	while (++it != this->lst.end())
 	{
 		int distance = *it - *(--it);
 		if (distance < min_distance)
