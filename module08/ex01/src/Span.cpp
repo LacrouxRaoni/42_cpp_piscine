@@ -40,8 +40,7 @@ void Span::addNumber(int new_n)
 	else
 	{
 		this->lst.push_back(new_n);
-	}
-	
+	}	
 }
 
 int Span::shortestSpan()
@@ -69,11 +68,10 @@ int Span::longestSpan()
 void Span::addManyNumbers(std::list<int>::iterator itb, std::list<int>::iterator ite)
 {
 	if (static_cast<unsigned int>(*ite) > this->getN())
-		throw SpanException("actual list is lowest than total elements received");
+		throw SpanException("current list is lowest than total elements received");
 	for (;itb != ite; itb++){
 		this->addNumber(*itb);
 	}
-	this->lst.sort();
 }
 
 void Span::checkListElements()
