@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/grade.png" alt="grade " />
+</p>
+
 # Module 08
 
 Module 08 is divided in three exercises.

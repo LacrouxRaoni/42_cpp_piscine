@@ -1,3 +1,7 @@
+<p align="center">
+	<img src="readme/badge.png" alt="badge " />
+</p>
+
 # CPP Piscine
 
 Welcome to CPP Piscine, a 42 school project that introduces you to C++ and Object-Oriented Programming (OOP) through nine different modules.
