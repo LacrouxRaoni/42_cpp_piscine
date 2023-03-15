@@ -14,7 +14,7 @@
 #include "../includes/Error.hpp"
 =======
 #include "Error.hpp"
->>>>>>> 51fd5c19598db01d5d07e233a01798aab8b628f6
+
 
 void errorPrinter(int errorCode)
 {
