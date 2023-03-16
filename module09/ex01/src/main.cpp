@@ -4,10 +4,11 @@ static int rpn(std::string line)
 {
 	Rpn rpn(line);
 
-	if (!rpn.createStack())
-		std::cout << "Invalid argument" << std::endl;
-	else
-		rpn.mathTime();
+	try {
+		rpn.createStack();
+	} catch (Rpn::RpnException &e){
+		std::cout << e.what() << std::endl;
+	}
 
 	return 0;
 

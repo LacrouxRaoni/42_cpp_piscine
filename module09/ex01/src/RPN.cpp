@@ -24,47 +24,47 @@ Rpn& Rpn::operator=(const Rpn &rhs)
 	{
 		this->expression = rhs.expression;
 		this->s = rhs.s;
-		this->token = rhs.token;
 	}
 	return *this;
 }
 
-bool Rpn::createTokens(int i)
+void Rpn::checkTokens(int i)
 {
 	std::string tmp;
+	int a = 0;
+	int b = 0;
 
+	a = s.top();
+	s.pop();
+	b = s.top();
+	s.pop();
 	switch(this->expression.at(i))
 	{
 		case '+':
-			tmp = this->expression.at(i);
-			this->token.append(tmp.c_str());
-			break ;
+			s.push(b + a);
+			break;
 		case '-':
-			tmp = this->expression.at(i);
-			this->token.append(tmp.c_str());
+			s.push(b - a);
 			break ;
 		case '*':
-			tmp = this->expression.at(i);
-			this->token.append(tmp.c_str());
+			s.push(b * a);
 			break ;
 		case '/':
-			tmp = this->expression.at(i);
-			this->token.append(tmp.c_str());
-			break ;
-		case ' ':
+			if (a == 0)
+				throw RpnException("It can't divide by 0");
+			s.push(b / a);
 			break ;
 		default:
-			return (false);
+			throw RpnException("Invalid arguments");
 	}
-	return (true);
 }
 
 bool Rpn::createStack()
 {
 	std::string tmp;
-	int i = this->expression.length();
+	long unsigned int i = -1;
 
-	while(--i > -1)
+	while(++i < this->expression.length())
 	{
 		if (std::isdigit(this->expression.at(i)))
 		{
@@ -74,44 +74,23 @@ bool Rpn::createStack()
 				s.push(std::atoi(tmp.c_str()));
 			}
 			else
-				return (false);
+				throw RpnException("Invalid number of arguments");
 		}
 		else
 		{
-			if (!createTokens(i))
-				return (false);
+			if (this->s.size() > 1 && this->expression.at(i) != ' ')
+				checkTokens(i);
 		}
 	}
+	if (this->s.size() == 1)
+		std::cout << this->s.top() << std::endl;
+	else
+	{
+		std::cout << this->s.top() << std::endl;
+		this->s.pop();
+		std::cout << this->s.top() << std::endl;
+	}
+
 	return (true);
 }
 
-void Rpn::mathTime()
-{
-	int a = 0;
-	int b = 0;
-	int i = this->token.size();
-	while(this->s.size() > 1)
-	{
-		a = s.top();
-		s.pop();
-		b = s.top();
-		s.pop();
-		
-		switch (this->token.at(--i))
-		{
-			case '+':
-				s.push(a + b);
-				break;
-			case '-':
-				s.push(a - b);
-				break ;
-			case '*':
-				s.push(a * b);
-				break ;
-			case '/':
-				s.push(a / b);
-				break ;
-		}
-	}
-	std::cout << s.top() << std::endl;
-}

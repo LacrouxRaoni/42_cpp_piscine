@@ -13,8 +13,7 @@ class Rpn
 	private:
 		std::string expression;
 		std::stack<int> s;
-		std::string token;
-		bool createTokens(int i);
+		void checkTokens(int i);
 	public:
 		Rpn();
 		Rpn(std::string expression);
@@ -22,6 +21,18 @@ class Rpn
 		~Rpn();
 		Rpn& operator=(const Rpn &rhs);
 		bool createStack();
-		void mathTime();
+
+		class RpnException : public std::exception
+		{
+			private:
+				std::string msg;
+			public:
+				RpnException(const std::string &msg) : msg(msg) {}
+				virtual ~RpnException() throw() {}
+				virtual const char* what() const throw()
+				{
+					return msg.c_str();
+				}
+		};
 };
 #endif
