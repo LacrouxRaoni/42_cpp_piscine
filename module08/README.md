@@ -8,7 +8,7 @@ Module 08 is divided in three exercises.
 
 ## About
 
-This is the final module of the CPP Piscine, where we learn about the Standard Template Library (STL) in C++. This module prepares us for our next challenge: building our own containers.
+In this module, we learn about containers and the Standard Template Library (STL) in C++.
 
 ### Containers
 

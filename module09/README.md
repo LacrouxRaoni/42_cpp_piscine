@@ -1,86 +1,75 @@
-<p align="center">
+<!--<p align="center">
   <img src="images/grade.png" alt="grade " />
 </p>
+-->
+# Module 09
 
-# Module 08
-
-Module 08 is divided in three exercises.
+Module 09 is divided in three exercises.
 
 ## About
 
-This is the final module of the CPP Piscine, where we learn about the Standard Template Library (STL) in C++. This module prepares us for our next challenge: building our own containers.
+This is the final module of the CPP Piscine where we use containers from the Standard Template Library (STL) in C++. In each exercise, it is mandatory to use a different container, and you cannot repeat a container in other exercises.
 
-### Containers
 
-	In C++, a container is a data structure that stores a collection of objects or values. C++ provides several types of containers, including:
+## Exercise 00 - Bitcoin Exchange
 
-	    - Sequence containers: These containers store elements in a linear sequence, such as a std::vector, std::list, or std::deque.
+For the first exercise, we have a `data.csv` file containing the date and Bitcoin value during a specific period. The program receives a file as an argument from the terminal, which includes the date and value to be converted to the Bitcoin value.
 
-	    - Associative containers: These containers store elements in a sorted order based on their keys, such as a std::set, std::map, std::multiset, or std::multimap.
+To obtain the value from `data.csv`, the program uses a map container since there is no library available in CPP98 to manipulate dates. The map is constructed with string and float as key-value pairs.
 
-	    - Container adaptors: These containers provide a specific interface for a given container type, such as std::stack, std::queue, and std::priority_queue.
+### Map container
 
-	Containers are an essential part of C++ programming, providing a convenient and efficient way to store and manipulate collections of data. They are also an important part of the C++ Standard Template Library (STL), which provides a set of powerful and flexible algorithms and containers that can be used in a wide range of applications.
+	Maps are typically implemented as a binary search tree, which allows for fast search, insertion, and deletion of elements. Maps are useful when you need to store a set of values that can be efficiently accessed and searched based on a unique key.
 
-## Exercise 00 - Easy find
+	Maps provide several member functions, such as insert(), find(), and erase(), that allow you to add, search for, and remove elements from the container. Maps also provide a range of iterators that enable you to traverse the container and access its elements.
 
-The first exercise is quite simple. We create a template method called ```easyfind()```.
+	In addition to the standard map, C++ also provides several other container classes based on the same concept, including multimap, unordered_map, and unordered_multimap. Each of these containers has slightly different properties and performance characteristics, so it's important to choose the right one for your specific use case.
 
-```easyfind()``` receives two parameters:
+To process the file received from the terminal, the program reads the file and parses each line to search for the corresponding entry in the map. If a match is found, the program returns the converted value along with the associated information.
 
-1. A type ```T``` that receives a container.
-2. An integer value.
+If the data format in the file is invalid, the program displays an error message to inform the user of the issue. By parsing each line and searching for the corresponding entry in the map, the program can efficiently process large amounts of data and provide accurate results for each entry.
 
-The function iterates the container using ```std::find()``` and returns the first occurrence of the value ```n``` in the container.
+## Exercise 01 - Reverse Polish Notation
 
-The ```main``` method has tests with list, vector, and deque containers.
+### Reverse Polish Notation
 
-However, it's worth noting that this method doesn't handle associative containers.
+	Reverse Polish Notation (RPN), also known as postfix notation, is a mathematical notation in which operators are placed after their operands. For example, instead of writing 2 + 3, we would write 2 3 + in RPN.
 
-## Exercise 01 - Span
+	To evaluate an expression in RPN, we start with an empty stack and scan the expression from left to right. When we encounter a number, we push it onto the stack. When we encounter an operator, we pop the top two values from the stack, apply the operator to them, and push the result back onto the stack.
 
-In this exercise, we are creating a class called ```Span```. 
-The ```Span``` class stores a maximum of ```N``` elements in a list, and the ```shortestSpan()``` and ```longestSpan()``` methods check the range limits between the numbers.
+	For example, to evaluate the RPN expression 2 3 + 4 *, we start with an empty stack and scan the expression from left to right:
 
-The ```Span``` class has the following attributes:
+		1. Push 2 onto the stack.
+	    2. Push 3 onto the stack.
+	    3. Pop 3 and then 2 from the stack, add them, and push the result (5) back onto the stack.
+	    4. Push 4 onto the stack.
+	    5. Pop 4 and then 5 from the stack, multiply them, and push the result (20) back onto the stack.
 
-1. A private unsigned integer ```n``` that represent the range of elements Span can store.
-2. A private ```std::list<int> lst``` that will store the elements received.
-3. A public constructor that sets ```n``` to 0.
-4. A parameterized constructor that receives an unsigned integer ```n```.
-5. A destructor.
-6. A copy constructor.
-7. An overloaded ```operator=```.
-8. A getter for ```n```.
-9. A method called ```addNumber()``` that receives a new integer ```new_n``` to add to the list. If the list is full, it throws an exception.
-10. A ```shortestSpan()``` method that returns the minimum range between the elements in the list.
-11. A ```longestSpan()``` method that returns the maximum range between the elements in the list.
-12. An ```addManyNumbers()``` method that receives a range of iterators from the beginning to the end to include elements in the Span list.
-13. A ```checkListElements()``` that sort the list them, erifies if the element is empty or if it has only one element. If either of these conditions is true, it throws an exception.
-14. A subclass that inherits from ```std::exception``` to handle custom exceptions.
+	The final value on the stack (20) is the result of the expression.
 
-The ```std::list``` has the ```sort()``` method that makes it easier to check the range. The entire program follows an "STL style" to understand how to handle containers.
+	RPN is often used in computer programs and calculators because it can be evaluated using a simple stack-based algorithm.
 
-## Exercise 02 - Mutated abomination
+The program receives positive numbers as arguments with values ranging from 0 to 9, along with mathematical operators to convert to RPN.
 
-The last exercise of this module and this project is to create an iterator for the container std::stack. 
+To convert the expression to RPN, the program uses a stack container to hold the numbers and perform operations when necessary. The algorithm scans the expression from left to right and pushes each number onto the stack. When an operator is encountered, the program pops the top two values from the stack, applies the operator to them, and pushes the result back onto the stack.
 
-### std::stack 
+For example, to convert the expression ```2 + 3 * 4 - 5``` to RPN, the program would first push `2` onto the stack. When it encounters the `+` operator, it pops `2` and pushes it onto the output queue. It then pushes `3` onto the stack. When it encounters the `*` operator, it pops `3` and `2` and pushes `3 * 2` (`6`) back onto the stack. It then pushes `4` onto the stack. When it encounters the `-` operator, it pops `4` and `6` and pushes `4 - 6` (`-2`) back onto the stack. Finally, it pushes `5` onto the stack and pops the remaining value (`-2`) and pushes it onto the output queue.
 
-	`std::stack` is a container adapter in the C++ Standard Template Library (STL) that provides a stack data structure. A stack is a last-in, first-out (LIFO) data structure where the last element inserted is the first element to be removed. It operates on a principle known as "last in, first out" (LIFO) where the element that was most recently added to the stack is the first one to be removed.
+The resulting RPN expression is `2 3 4 * + 5 -`, which can be evaluated using a stack-based algorithm similar to the one used to convert the expression to RPN.
 
-	The `std::stack` class is implemented as an adapter on top of other container classes in the STL, such as `std::vector`, `std::deque`, and `std::list`. This means that the underlying container can be any of these, but the `std::stack` interface remains the same.
 
-	The `std::stack` class provides several methods to manipulate the stack, including:
+## Exercise 02 - PmergeMe
 
-	    - `push()`: Adds an element to the top of the stack.
-	    - `pop()`: Removes the top element from the stack.
-	    - `top()`: Returns a reference to the top element of the stack.
-	    - `empty()`: Returns a boolean value indicating whether the stack is empty.
-	    - `size()`: Returns the number of elements in the stack.
+The third exercise the program receives positive numbers as argument from terminal and it sorts these numbers using merge-insert sort algorithm.
 
-	`std::stack` provides a simple and efficient way to implement a stack data structure in C++, and it is commonly used in algorithms and data structures.
+### Merge-insert
 
-We have created a template class named MutantStack that inherits from ```std::stack<T>```. This class is a canonical orthodox class and has an iterator from the deque container. In order to create iterator methods for the ```std::stack``` in ```MutantStack```, we have added a ```begin``` method that returns a pointer to the first occurrence of the stack, and an ```end``` method to return that pointer to the last position.
+	Merge-insert is a common algorithm used for merging two sorted arrays into a single sorted array.
 
-There are tests in the main method to demonstrate the ```MutantStack``` class in action, compared with ```list``` and ```vector```.
+	The basic idea behind merge-insert is to start with an empty array and insert the smallest element from the two input arrays into the output array. The algorithm continues to compare the smallest unprocessed element from each input array and insert the smallest of the two into the output array until all elements have been processed.
+
+	This algorithm has a time complexity of O(n), where n is the total number of elements in the input arrays. Merge-insert is a stable algorithm, meaning that it maintains the relative order of equal elements from the input arrays.
+
+the program receive the values from terminal, check if it's positive numbers and store in a list and deque containers. 
+
+So it use the merge-sort algorithm and calculate the time for the sort os list and deeq and show it in theterminal. 

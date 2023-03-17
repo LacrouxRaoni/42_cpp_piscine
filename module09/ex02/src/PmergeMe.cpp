@@ -39,6 +39,7 @@ void PmergeMe::createLists(char **args)
 		deq.push_back(std::atoi(args[i]));
 		i++;
 	}
+	callSort();
 }
 
 template<typename T> void PmergeMe::mergeSort(T &element)
@@ -62,7 +63,6 @@ template<typename T> void PmergeMe::mergeSort(T &element)
 	mergeSort(right);
 	merge(left, right, element);
 }
-
 
 template<typename T> void PmergeMe::merge(T &left, T &right, T &element)
 {
@@ -97,6 +97,11 @@ void PmergeMe::callSort()
 	timeval t_lst;
 	timeval t_deq;
 
+	std::cout << "Before: ";
+	for(std::list<int>::iterator it = this->lst.begin(); it != lst.end(); it++)
+		std::cout << (*it) << " ";
+	std::cout << std::endl;
+
 	gettimeofday(&start, NULL);
 	this->mergeSort(this->lst);
 	gettimeofday(&t_lst, NULL);
@@ -106,8 +111,14 @@ void PmergeMe::callSort()
 	for(std::list<int>::iterator it = this->lst.begin(); it != lst.end(); it++)
 		std::cout << (*it) << " ";
 	std::cout << std::endl;
-	std::cout << "time: " << t_lst.tv_usec << std::endl;
+	std::cout << "Time to process a range of " << this->lst.size() << " elements with std::list : " << t_lst.tv_sec + t_lst.tv_usec << " us" << std::endl;
+	std::cout << std::endl;
 
+
+
+	std::cout << "Before: ";
+	for(std::deque<int>::iterator it = this->deq.begin(); it != deq.end(); it++)
+		std::cout << (*it) << " ";
 	std::cout << std::endl;
 
 	gettimeofday(&start, NULL);
@@ -118,5 +129,5 @@ void PmergeMe::callSort()
 	for(std::deque<int>::iterator it = this->deq.begin(); it != deq.end(); it++)
 		std::cout << (*it) << " ";
 	std::cout << std::endl;
-	std::cout << "time: " << t_deq.tv_usec << std::endl;
+	std::cout << "Time to process a range of " << this->deq.size() << " elements with std::deque : " <<t_deq.tv_sec + t_deq.tv_usec << " us" << std::endl;
 }
