@@ -63,6 +63,22 @@ bool BitCoinExchange::validateDate(std::string date)
 	return true;
 }
 
+bool BitCoinExchange::validateNumberValue(std::string value, std::string line)
+{
+	for (size_t i = 1; i < value.length(); i++)
+	{
+		if (!std::isdigit(value.at(i)))
+		{
+			if (value.at(i) != '.' || (value.find_first_of('.') != value.find_last_of('.')) || i == value.length() - 1)
+			{
+				std::cout << "Error: bad input => " + line << std::endl;
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 bool BitCoinExchange::validateValue(float value)
 {
 	if (value < 0)
@@ -105,7 +121,7 @@ void BitCoinExchange::fileValidator()
 					std::cout << "Error: bad input => " + line << std::endl;
 				std::getline(iss, value, '|');
 				float fValue = std::strtof(value.c_str(), NULL);
-				if (validateValue(fValue))
+				if (validateNumberValue(value, line) && validateValue(fValue))
 					convertValue(date, fValue);
 			}
 		}

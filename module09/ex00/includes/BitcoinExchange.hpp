@@ -17,6 +17,7 @@ class BitCoinExchange
 		std::string fileIn;
 		std::map<std::string, float> map;
 		bool validateDate(std::string date);
+		bool validateNumberValue(std::string value, std::string line);
 		bool validateValue(float value);
 		void convertValue(std::string key, float value);
 	public:

@@ -23,21 +23,20 @@ PmergeMe& PmergeMe::operator=(const PmergeMe &rhs)
 	return *this;
 }
 
-void PmergeMe::createLists(char **args)
+void PmergeMe::createLists(int argc, char **args)
 {
-	int i;
-
-	i = 1;
-	while (args[i])
+	for (int i = 1; i < argc; i++)
 	{
-		if (std::atoi(args[i]) <= 0)
+		for (size_t j = 0; j < strlen(args[i]); j++)
 		{
-			std::cout << "Error" << std::endl;
-			return ;
+			if (!std::isdigit(args[i][j]))
+			{
+				std::cout << "Error" << std::endl;
+				return ;
+			}
 		}
 		lst.push_back(std::atoi(args[i]));
 		deq.push_back(std::atoi(args[i]));
-		i++;
 	}
 	callSort();
 }
