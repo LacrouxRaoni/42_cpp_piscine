@@ -114,7 +114,6 @@ void PmergeMe::callSort()
 	std::cout << std::endl;
 
 
-
 	std::cout << "Before: ";
 	for(std::deque<int>::iterator it = this->deq.begin(); it != deq.end(); it++)
 		std::cout << (*it) << " ";

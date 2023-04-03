@@ -68,7 +68,7 @@ bool Rpn::createStack()
 	{
 		if (std::isdigit(this->expression.at(i)))
 		{
-			if (std::isspace(this->expression.at(i + 1)))
+			if ((i + 1) < this->expression.length() && std::isspace(this->expression.at(i + 1)))
 			{
 				tmp = this->expression.at(i);
 				s.push(std::atoi(tmp.c_str()));
@@ -78,19 +78,19 @@ bool Rpn::createStack()
 		}
 		else
 		{
-			if (this->s.size() > 1 && this->expression.at(i) != ' ')
-				checkTokens(i);
+			if (this->expression.at(i) != ' ')
+			{
+				if (this->s.size() > 1)
+					checkTokens(i);
+				else
+					throw RpnException("Invalid arguments");
+			}
 		}
 	}
 	if (this->s.size() == 1)
 		std::cout << this->s.top() << std::endl;
 	else
-	{
-		std::cout << this->s.top() << std::endl;
-		this->s.pop();
-		std::cout << this->s.top() << std::endl;
-	}
-
+		throw RpnException("Invalid number of arguments");
 	return (true);
 }
 
