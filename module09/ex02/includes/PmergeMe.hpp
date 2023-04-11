@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string.h>
 #include <algorithm>
+#include <utility>
+
 #include <list>
 #include <deque>
 #include <sys/time.h>
@@ -11,6 +13,7 @@
 class PmergeMe
 {
 	private:
+		std::list<std::pair<int, int> > lstPair;
 		std::list<int> lst;
 		std::deque<int> deq;
 	public:
@@ -19,8 +22,12 @@ class PmergeMe
 		~PmergeMe();
 		PmergeMe& operator=(const PmergeMe &rhs);
 		void createLists(int argc, char **args);
-		template<typename T> void mergeSort(T &element);
-		template<typename T> void merge(T &left, T &right, T &element);
 		void callSort();
+		void createPair(std::list<int> lst);
+		void sort(std::list<std::pair<int, int> > lst);
+
+
+		void mergeSort(std::list<int> element);
+		void merge(std::list<int> &left, std::list<int> &right, std::list<int> &element);
 };
 #endif
