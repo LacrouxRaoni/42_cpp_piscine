@@ -41,8 +41,10 @@ void PmergeMe::createLists(int argc, char **args)
 	callSort();
 }
 
-void PmergeMe::createPair(std::list<int> lst)
+std::list<std::pair<int, int> > PmergeMe::createPair(std::list<int> &lst)
 {
+	std::list<std::pair<int, int> > newLstPair;
+
 	int size = lst.size();
 	while (!lst.empty())
 	{
@@ -50,27 +52,20 @@ void PmergeMe::createPair(std::list<int> lst)
 		lst.pop_front();
 		int elem2 = lst.front();
 		lst.pop_front();
-		if (size % 2 == 0)
-			lstPair.push_back(std::make_pair(elem1, elem2));
-		else
+		newLstPair.push_back(std::make_pair(elem1, elem2));
+		if (lst.size() == 1 && size % 2 != 0)
 		{
-			lstPair.push_back(std::make_pair(elem1, elem2));
-			if (lst.size() == 1)
-			{
-				elem1 = lst.front();
-				lst.pop_front();
-				lstPair.push_back(std::make_pair(elem1, -1));
-			}
+			elem1 = lst.front();
+			lst.pop_front();
+			newLstPair.push_back(std::make_pair(elem1, -1));
 		}
 	}
+	return newLstPair;
 }
 
-void PmergeMe::sort(std::list<std::pair<int, int> > lstPair)
+std::list<int> PmergeMe::sortPair(std::list<std::pair<int, int> > &lstPair)
 {
-	createPair(lst);
 	std::list<int> smallest; 
-	std::list<int> largest; 
-	
 	for (std::list<std::pair<int, int> >::iterator it = lstPair.begin(); it != lstPair.end(); it++)
 	{
 		if (it->second != -1 && it->first > it->second)
@@ -79,29 +74,57 @@ void PmergeMe::sort(std::list<std::pair<int, int> > lstPair)
 			lst.push_back(it->second);
 		smallest.push_back(it->first);
 	}
-	lst.sort();
+	return smallest;		
+}
+
+void PmergeMe::sortLargestList()
+{
+	std::list<int>::iterator i = lst.begin();
+	std::list<int>::iterator j = i;
+	size_t size = lst.size();
+	while (--size > 0)
+	{
+		j++;
+		if (*i > *j)
+		{
+			std::swap(*i, *j);
+			while (i != lst.begin())
+			{
+				std::list<int>::iterator k = i;
+				i--;
+				if (*i > *k)
+					std::swap(*i, *k);
+				else
+					break ;
+			}
+		}
+		i = j;
+	}
+}
+
+void  PmergeMe::merge(std::list<int> smallest)
+{
 	for (std::list<int>::iterator it = smallest.begin(); it != smallest.end(); ++it) 
 	{
         std::list<int>::iterator pos = std::lower_bound(lst.begin(), lst.end(), *it);
         lst.insert(pos, *it);
-    }	
-
-
+    }
 }
 
-
-
-
+void PmergeMe::sort(std::list<int> &lst)
+{
+	std::list<std::pair<int, int> > lstPair = createPair(lst);
+	std::list<int> smallest = sortPair(lstPair);
+	sortLargestList();
+	merge(smallest);
+}
 
 void PmergeMe::callSort()
 {
-	this->sort(this->lstPair);
-	for(std::list<int>::iterator it = this->lst.begin(); it != lst.end(); it++)
-		std::cout << (*it) << " ";
-	/*
+
 	timeval start;
 	timeval t_lst;
-	timeval t_deq;
+	//timeval t_deq;
 
 	std::cout << "Before: ";
 	for(std::list<int>::iterator it = this->lst.begin(); it != lst.end(); it++)
@@ -109,7 +132,7 @@ void PmergeMe::callSort()
 	std::cout << std::endl;
 
 	gettimeofday(&start, NULL);
-	this->mergeSort(this->lst);
+	this->sort(this->lst);
 	gettimeofday(&t_lst, NULL);
 	timersub(&t_lst, &start, &t_lst);
 
@@ -120,7 +143,7 @@ void PmergeMe::callSort()
 	std::cout << "Time to process a range of " << this->lst.size() << " elements with std::list : " << t_lst.tv_sec + t_lst.tv_usec << " us" << std::endl;
 	std::cout << std::endl;
 
-
+	/*
 	std::cout << "Before: ";
 	for(std::deque<int>::iterator it = this->deq.begin(); it != deq.end(); it++)
 		std::cout << (*it) << " ";

@@ -13,7 +13,6 @@
 class PmergeMe
 {
 	private:
-		std::list<std::pair<int, int> > lstPair;
 		std::list<int> lst;
 		std::deque<int> deq;
 	public:
@@ -23,11 +22,10 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe &rhs);
 		void createLists(int argc, char **args);
 		void callSort();
-		void createPair(std::list<int> lst);
-		void sort(std::list<std::pair<int, int> > lst);
-
-
-		void mergeSort(std::list<int> element);
-		void merge(std::list<int> &left, std::list<int> &right, std::list<int> &element);
+		void sort(std::list<int> &lst);
+		std::list<std::pair<int, int> > createPair(std::list<int> &lst);
+		std::list<int> sortPair(std::list<std::pair<int, int> > &lstPair);
+		void sortLargestList();
+		void merge(std::list<int> smallest);
 };
 #endif
