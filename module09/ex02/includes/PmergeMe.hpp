@@ -38,7 +38,5 @@ class PmergeMe
 		template<typename T>
 		void mergeLst(T& smallest, T &lst);
 
-	
-	
 };
 #endif

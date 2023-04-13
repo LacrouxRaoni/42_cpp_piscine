@@ -43,8 +43,6 @@ void PmergeMe::createLists(int argc, char **args)
 
 
 
-
-
 template<typename T, typename P>
 void PmergeMe::createPairLst(T &lst, P &lstPair)
 {
@@ -124,15 +122,6 @@ void PmergeMe::sortList(T &lst, P &lstPair)
 	sortLargestLst(lst);
 	mergeLst(smallest, lst);
 }
-
-
-
-
-
-
-
-
-
 
 void PmergeMe::callSort()
 {
