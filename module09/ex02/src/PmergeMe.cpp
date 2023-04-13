@@ -117,8 +117,10 @@ void PmergeMe::sortList(T &lst, P &lstPair)
 {
 	T smallest;
 
-	createPairLst(lst, lstPair);
-	sortPairLst(lst, lstPair, smallest);
+	if (lst.size() > 1){
+		createPairLst(lst, lstPair);
+		sortPairLst(lst, lstPair, smallest);
+	}
 	sortLargestLst(lst);
 	mergeLst(smallest, lst);
 }
