@@ -45,11 +45,9 @@ void PmergeMe::createLists(int argc, char **args)
 
 
 
-
-std::list<std::pair<int, int> > PmergeMe::createPairLst(std::list<int> &lst)
+template<typename T, typename P>
+void PmergeMe::createPairLst(T &lst, P &lstPair)
 {
-	std::list<std::pair<int, int> > newLstPair;
-
 	int size = lst.size();
 	while (!lst.empty())
 	{
@@ -57,21 +55,20 @@ std::list<std::pair<int, int> > PmergeMe::createPairLst(std::list<int> &lst)
 		lst.pop_front();
 		int elem2 = lst.front();
 		lst.pop_front();
-		newLstPair.push_back(std::make_pair(elem1, elem2));
+		lstPair.push_back(std::make_pair(elem1, elem2));
 		if (lst.size() == 1 && size % 2 != 0)
 		{
 			elem1 = lst.front();
 			lst.pop_front();
-			newLstPair.push_back(std::make_pair(elem1, -1));
+			lstPair.push_back(std::make_pair(elem1, -1));
 		}
 	}
-	return newLstPair;
 }
 
-std::list<int> PmergeMe::sortPairLst(std::list<std::pair<int, int> > &lstPair)
+template<typename T, typename P>
+void PmergeMe::sortPairLst(T &lst, P &lstPair, T &smallest)
 {
-	std::list<int> smallest; 
-	for (std::list<std::pair<int, int> >::iterator it = lstPair.begin(); it != lstPair.end(); it++)
+	for (typename P::iterator it = lstPair.begin(); it != lstPair.end(); it++)
 	{
 		if (it->second != -1 && it->first > it->second)
 			std::swap(it->first, it->second);
@@ -79,13 +76,13 @@ std::list<int> PmergeMe::sortPairLst(std::list<std::pair<int, int> > &lstPair)
 			lst.push_back(it->second);
 		smallest.push_back(it->first);
 	}
-	return smallest;		
 }
 
-void PmergeMe::sortLargestLst()
+template<typename T>
+void PmergeMe::sortLargestLst(T &lst)
 {
-	std::list<int>::iterator i = lst.begin();
-	std::list<int>::iterator j = i;
+	typename T::iterator i = lst.begin();
+	typename T::iterator j = i;
 	size_t size = lst.size();
 	while (--size > 0)
 	{
@@ -95,7 +92,7 @@ void PmergeMe::sortLargestLst()
 			std::swap(*i, *j);
 			while (i != lst.begin())
 			{
-				std::list<int>::iterator k = i;
+				typename T::iterator k = i;
 				i--;
 				if (*i > *k)
 					std::swap(*i, *k);
@@ -107,107 +104,28 @@ void PmergeMe::sortLargestLst()
 	}
 }
 
-void  PmergeMe::mergeLst(std::list<int> smallest)
+template<typename T>
+void  PmergeMe::mergeLst(T &smallest, T &lst)
 {
-	for (std::list<int>::iterator it = smallest.begin(); it != smallest.end(); ++it) 
+	for (typename T::iterator it = smallest.begin(); it != smallest.end(); ++it) 
 	{
-        std::list<int>::iterator pos = std::lower_bound(lst.begin(), lst.end(), *it);
+        typename T::iterator pos = std::lower_bound(lst.begin(), lst.end(), *it);
         lst.insert(pos, *it);
     }
 }
 
-void PmergeMe::sortList(std::list<int> &lst)
+template<typename T, typename P>
+void PmergeMe::sortList(T &lst, P &lstPair)
 {
-	std::list<std::pair<int, int> > lstPair = createPairLst(lst);
-	std::list<int> smallest = sortPairLst(lstPair);
-	sortLargestLst();
-	mergeLst(smallest);
+	T smallest;
+
+	createPairLst(lst, lstPair);
+	sortPairLst(lst, lstPair, smallest);
+	sortLargestLst(lst);
+	mergeLst(smallest, lst);
 }
 
 
-
-
-
-
-
-
-std::deque<std::pair<int, int> > PmergeMe::createPairDq(std::deque<int> &deq)
-{
-	std::deque<std::pair<int, int> > newDqPair;
-
-	int size = deq.size();
-	while (!deq.empty())
-	{
-		int elem1 = deq.front();
-		deq.pop_front();
-		int elem2 = deq.front();
-		deq.pop_front();
-		newDqPair.push_back(std::make_pair(elem1, elem2));
-		if (deq.size() == 1 && size % 2 != 0)
-		{
-			elem1 = deq.front();
-			deq.pop_front();
-			newDqPair.push_back(std::make_pair(elem1, -1));
-		}
-	}
-	return newDqPair;
-}
-
-std::deque<int> PmergeMe::sortPairDq(std::deque<std::pair<int, int> > &dqPair)
-{
-	std::deque<int> smallest; 
-	for (std::deque<std::pair<int, int> >::iterator it = dqPair.begin(); it != dqPair.end(); it++)
-	{
-		if (it->second != -1 && it->first > it->second)
-			std::swap(it->first, it->second);
-		if (it->second != -1)
-			deq.push_back(it->second);
-		smallest.push_back(it->first);
-	}
-	return smallest;		
-}
-
-void PmergeMe::sortLargestDq()
-{
-	std::deque<int>::iterator i = deq.begin();
-	std::deque<int>::iterator j = i;
-	size_t size = deq.size();
-	while (--size > 0)
-	{
-		j++;
-		if (*i > *j)
-		{
-			std::swap(*i, *j);
-			while (i != deq.begin())
-			{
-				std::deque<int>::iterator k = i;
-				i--;
-				if (*i > *k)
-					std::swap(*i, *k);
-				else
-					break ;
-			}
-		}
-		i = j;
-	}
-}
-
-void  PmergeMe::mergeDq(std::deque<int> smallest)
-{
-	for (std::deque<int>::iterator it = smallest.begin(); it != smallest.end(); ++it)
-	{
-        std::deque<int>::iterator pos = std::lower_bound(deq.begin(), deq.end(), *it);
-        deq.insert(pos, *it);
-    }
-}
-
-void PmergeMe::sortDeque(std::deque<int> &deq)
-{
-	std::deque<std::pair<int, int> > dqPair = createPairDq(deq);
-	std::deque<int> smallest = sortPairDq(dqPair);
-	sortLargestDq();
-	mergeDq(smallest);
-}
 
 
 
@@ -229,7 +147,8 @@ void PmergeMe::callSort()
 	std::cout << std::endl;
 
 	gettimeofday(&start, NULL);
-	this->sortList(this->lst);
+	std::list<std::pair<int, int> > lstPair;
+	this->sortList(this->lst, lstPair);
 	gettimeofday(&t_lst, NULL);
 	timersub(&t_lst, &start, &t_lst);
 
@@ -247,7 +166,9 @@ void PmergeMe::callSort()
 	std::cout << std::endl;
 
 	gettimeofday(&start, NULL);
-	this->sortDeque(this->deq);
+
+	std::deque<std::pair<int, int> > dqPair;
+	this->sortList(this->deq, dqPair);
 	gettimeofday(&t_deq, NULL);
 	timersub(&t_deq, &start, &t_deq);
 	std::cout << "After: ";
@@ -255,4 +176,5 @@ void PmergeMe::callSort()
 		std::cout << (*it) << " ";
 	std::cout << std::endl;
 	std::cout << "Time to process a range of " << this->deq.size() << " elements with std::deque : " <<t_deq.tv_sec + t_deq.tv_usec << " us" << std::endl;
+
 }

@@ -13,7 +13,7 @@
 class PmergeMe
 {
 	private:
-		std::list<int> lst;
+		std::list<int> lst;	
 		std::deque<int> deq;
 	public:
 		PmergeMe();
@@ -23,17 +23,22 @@ class PmergeMe
 		void createLists(int argc, char **args);
 		void callSort();
 		
-		
-		void sortList(std::list<int> &lst);
-		std::list<std::pair<int, int> > createPairLst(std::list<int> &lst);
-		std::list<int> sortPairLst(std::list<std::pair<int, int> > &lstPair);
-		void sortLargestLst();
-		void mergeLst(std::list<int> smallest);
+		template<typename T, typename P>
+		void sortList(T &lst, P &lstPair);
 
-		void sortDeque(std::deque<int> &dq);
-		std::deque<std::pair<int, int> > createPairDq(std::deque<int> &dq);
-		std::deque<int> sortPairDq(std::deque<std::pair<int, int> > &dqPair);
-		void sortLargestDq();
-		void mergeDq(std::deque<int> smallest);
+		template<typename T, typename P>
+		void createPairLst(T &lst, P &lstPair);
+
+		template<typename T, typename P>
+		void sortPairLst(T &lst, P &lstPair, T &smallest);
+
+		template<typename T>
+		void sortLargestLst(T &lst);
+
+		template<typename T>
+		void mergeLst(T& smallest, T &lst);
+
+	
+	
 };
 #endif
