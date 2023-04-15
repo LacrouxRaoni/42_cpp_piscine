@@ -1,7 +1,7 @@
-<!--<p align="center">
+-<p align="center">
   <img src="images/grade.png" alt="grade " />
 </p>
--->
+
 # Module 09
 
 Module 09 is divided in three exercises.
